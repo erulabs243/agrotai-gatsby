@@ -35,6 +35,7 @@ export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({
         "@pages": path.resolve(`${SRCDIR}/pages`),
         "@templates": path.resolve(`${SRCDIR}/templates`),
         "@layouts": path.resolve(`${SRCDIR}/layouts`),
+        "@propstypes": path.resolve(`${SRCDIR}/propstypes`),
       },
     },
   })

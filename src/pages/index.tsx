@@ -1,4 +1,11 @@
 import { Box, Heading, Text } from "@chakra-ui/react"
+import {
+  CrowdfarmingHero,
+  IndexHero,
+  StatsHero,
+  WorksHero,
+} from "@components/index"
+import Layout from "@layouts/layout"
 import { PageProps } from "gatsby"
 import React from "react"
 
@@ -6,14 +13,19 @@ type Props = {}
 
 const IndexPage: React.FC<PageProps> = (props: Props) => {
   return (
-    <Box>
-      <Heading textTransform="uppercase">This is the header</Heading>
-      <Text textTransform="uppercase">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem earum
-        mollitia a assumenda ut qui nulla nemo sunt vitae hic odit aspernatur
-        impedit sapiente voluptas, officiis doloremque placeat aliquam deserunt?
-      </Text>
-    </Box>
+    <Layout>
+      {/* INDEX HERO */}
+      <IndexHero />
+
+      {/* AREAS OF EXPERTISE */}
+      <WorksHero />
+
+      {/* SOME STATS */}
+      <StatsHero />
+
+      {/* CROWDFARMIN HERO */}
+      <CrowdfarmingHero />
+    </Layout>
   )
 }
 

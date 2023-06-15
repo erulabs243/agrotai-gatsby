@@ -111,7 +111,8 @@
       "@images*": ["./src/images/*"],
       "@pages*": ["./src/pages/*"],
       "@templates*": ["./src/templates/*"],
-      "@layouts*": ["./src/layouts/*"]
+      "@layouts*": ["./src/layouts/*"],
+      "@propstypes*": ["./src/propstypes/*"]
     }
   },
   "include": ["./src/**/*"],

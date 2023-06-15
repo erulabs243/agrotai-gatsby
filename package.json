@@ -11,6 +11,7 @@
     "@emotion/styled": "^11.11.0",
     "@fontsource/barlow": "^5.0.3",
     "@fontsource/dm-sans": "^5.0.3",
+    "@tabler/icons-react": "^2.22.0",
     "framer-motion": "^10.12.16",
     "gatsby": "^5.10.0",
     "gatsby-plugin-image": "^3.10.0",
