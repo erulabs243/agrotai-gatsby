@@ -4,14 +4,21 @@
  * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/
  */
 
+import { GatsbyNode } from "gatsby"
+import path from "path"
+import { SRCDIR } from "../../consts"
+
 /**
  * @type {import('gatsby').GatsbyNode['createPages']}
  */
-exports.createPages = async ({ actions }) => {
+export const createPages: GatsbyNode["createPages"] = async ({ actions }) => {
   const { createPage } = actions
+
+  const dsgTemplate = path.resolve(`${SRCDIR}/templates/using-dsg.tsx`)
+
   createPage({
     path: "/using-dsg",
-    component: require.resolve("./src/templates/using-dsg.js"),
+    component: dsgTemplate,
     context: {},
     defer: true,
   })
