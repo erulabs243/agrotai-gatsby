@@ -23,3 +23,19 @@ export const createPages: GatsbyNode["createPages"] = async ({ actions }) => {
     defer: true,
   })
 }
+
+export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({
+  actions,
+}) => {
+  actions.setWebpackConfig({
+    resolve: {
+      alias: {
+        "@components": path.resolve(`${SRCDIR}/components`),
+        "@images": path.resolve(`${SRCDIR}/images`),
+        "@pages": path.resolve(`${SRCDIR}/pages`),
+        "@templates": path.resolve(`${SRCDIR}/templates`),
+        "@layouts": path.resolve(`${SRCDIR}/layouts`),
+      },
+    },
+  })
+}

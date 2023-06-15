@@ -1,8 +1,8 @@
 import * as React from "react"
 import { HeadFC, Link } from "gatsby"
 
-import Layout from "../components/layout"
-import Seo from "../components/seo"
+import Layout from "@layouts/layout"
+import Seo from "@components/seo"
 
 const UsingDSG = () => (
   <Layout>

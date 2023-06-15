@@ -105,8 +105,15 @@
 
     /* Completeness */
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
-    "skipLibCheck": true /* Skip type checking all .d.ts files. */
+    "skipLibCheck": true /* Skip type checking all .d.ts files. */,
+    "paths": {
+      "@components*": ["./src/components/*"],
+      "@images*": ["./src/images/*"],
+      "@pages*": ["./src/pages/*"],
+      "@templates*": ["./src/templates/*"],
+      "@layouts*": ["./src/layouts/*"]
+    }
   },
-  "include": ["./src"],
+  "include": ["./src/**/*"],
   "exclude": ["./.cache", "./node_modules", "./public"]
 }
