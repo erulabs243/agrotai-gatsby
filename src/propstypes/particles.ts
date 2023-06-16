@@ -10,3 +10,10 @@ export type StatsCardProps = {
   amount: number
   description: string
 }
+
+// Tabs
+export type HomeTabsProps = {
+  heading: string
+  image: string
+  description: string
+}
