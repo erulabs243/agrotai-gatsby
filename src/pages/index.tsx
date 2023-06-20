@@ -23,7 +23,7 @@ const IndexPage: React.FC<PageProps> = (props: Props) => {
       {/* SOME STATS */}
       <StatsHero />
 
-      {/* CROWDFARMIN HERO */}
+      {/* CROWDFARMING HERO */}
       <CrowdfarmingHero />
     </Layout>
   )

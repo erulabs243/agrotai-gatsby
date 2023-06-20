@@ -124,7 +124,7 @@ const CrowdfarmingHero = (props: Props) => {
               <Image
                 alt={tabs[tabIndex].heading}
                 src={tabs[tabIndex].image}
-                h={72}
+                h={96}
                 w="full"
                 fit="cover"
                 rounded="lg"

@@ -10,6 +10,7 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "@components/header"
 import { Container } from "@chakra-ui/react"
+import Footer from "@components/footer"
 
 type Props = {
   children: React.ReactNode
@@ -29,7 +30,9 @@ const Layout = ({ children }: Props) => {
   return (
     <>
       <Container w="100%" maxW="100%" p={0}>
+        <Header siteTitle="Agrotai" />
         <main>{children}</main>
+        <Footer />
       </Container>
     </>
   )
