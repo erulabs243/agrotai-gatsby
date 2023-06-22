@@ -10,6 +10,12 @@
 import path from "path"
 import { SRCDIR } from "../../consts"
 
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
+console.log(process.env.STRAPI_HOST)
+
 export default {
   siteMetadata: {
     title: `Gatsby Default Starter`,
