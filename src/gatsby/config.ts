@@ -24,6 +24,22 @@ export default {
     siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
   },
   plugins: [
+    {
+      resolve: "gatsby-source-strapi",
+      options: {
+        apiURL: process.env.STRAPI_HOST,
+        accessToken: process.env.STRAPI_TOKEN,
+        collectionTypes: [
+          "product",
+          "category",
+          "campaign",
+          "home-stat",
+          "sale",
+          "service",
+        ],
+        queryLimit: 1000,
+      },
+    },
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
