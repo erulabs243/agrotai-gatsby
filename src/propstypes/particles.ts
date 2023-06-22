@@ -9,6 +9,8 @@ export type ExpertiseCardProps = {
 export type StatsCardProps = {
   amount: number
   description: string
+  title: string
+  metric: string
 }
 
 // Tabs

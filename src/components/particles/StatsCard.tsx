@@ -2,7 +2,7 @@ import { Box, Stack, Text } from "@chakra-ui/react"
 import { StatsCardProps } from "@propstypes/particles"
 import React from "react"
 
-const StatsCard = ({ amount, description }: StatsCardProps) => {
+const StatsCard = ({ amount, description, title, metric }: StatsCardProps) => {
   return (
     <Stack
       as={Box}
@@ -14,6 +14,14 @@ const StatsCard = ({ amount, description }: StatsCardProps) => {
       rounded="lg"
       bg="white"
     >
+      <Text
+        textAlign="left"
+        textTransform="uppercase"
+        fontSize="sm"
+        color="gray.700"
+      >
+        {title}
+      </Text>
       <Text
         fontSize="5xl"
         textAlign="left"

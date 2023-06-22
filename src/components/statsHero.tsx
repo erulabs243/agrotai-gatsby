@@ -1,30 +1,24 @@
 import React from "react"
+import { graphql, useStaticQuery } from "gatsby"
 import { Container, Stack, Heading, Text, Box } from "@chakra-ui/react"
 import { StatsCardProps } from "@propstypes/particles"
 import { StatsCard } from "@components/particles"
+import { HomeStatsInterface } from "@propstypes/home"
 
-type Props = {}
+const StatsHero = () => {
+  const { stats } = useStaticQuery<HomeStatsInterface>(graphql`
+    query {
+      stats: allStrapiHomeStat(sort: { amount: ASC }) {
+        nodes {
+          amount
+          metric
+          title
+          description
+        }
+      }
+    }
+  `)
 
-const stats: StatsCardProps[] = [
-  {
-    amount: 2,
-    description: "provinces conquises",
-  },
-  {
-    amount: 37,
-    description: "étangs piscicoles aménagés",
-  },
-  {
-    amount: 50,
-    description: "personnes engagées",
-  },
-  {
-    amount: 90,
-    description: "ha de terres cultivées",
-  },
-]
-
-const StatsHero = (props: Props) => {
   return (
     <Container w="100%" maxW="100%" bg="green.500">
       <Stack
@@ -47,11 +41,13 @@ const StatsHero = (props: Props) => {
           alignSelf="center"
           spacing={8}
         >
-          {stats.map(stat => (
+          {stats.nodes.map(stat => (
             <StatsCard
               key={stat.amount}
               amount={stat.amount}
               description={stat.description}
+              title={stat.title}
+              metric={stat.metric}
             />
           ))}
         </Stack>
