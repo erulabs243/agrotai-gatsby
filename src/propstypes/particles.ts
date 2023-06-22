@@ -1,8 +1,9 @@
 // Expertise card
 export type ExpertiseCardProps = {
-  heading: string
+  title: string
   icon: string
-  subheading: string
+  subtitle: string
+  description: string
 }
 
 // Stats card

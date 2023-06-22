@@ -1,29 +1,25 @@
 import { Container, Stack, Box, Heading, Text } from "@chakra-ui/react"
+import { graphql, useStaticQuery } from "gatsby"
 import { ExpertiseCard } from "@components/particles"
-import { ExpertiseCardProps } from "@propstypes/particles"
 import React from "react"
+import { HomeWorkInterface } from "@propstypes/home"
 
-type Props = {}
+const WorksHero = () => {
+  const { works } = useStaticQuery<HomeWorkInterface>(graphql`
+    query {
+      works: allStrapiService {
+        nodes {
+          title
+          subtitle
+          description
+          icon
+        }
+      }
+    }
+  `)
 
-const expertises: ExpertiseCardProps[] = [
-  {
-    heading: "Pisciculture",
-    subheading: "Des poissons, Tilapia, sambaza, dans des étangs",
-    icon: "fish",
-  },
-  {
-    heading: "Maraîchers",
-    subheading: "des produits maraichers,des légumes, frais et bio",
-    icon: "vegetables",
-  },
-  {
-    heading: "Céréales",
-    subheading: "produits céréaliers, sorgho, mais, arachide,...",
-    icon: "cereals",
-  },
-]
+  console.log(works)
 
-const WorksHero = (props: Props) => {
   return (
     <Container w="100%" maxW="100%">
       <Stack
@@ -45,12 +41,13 @@ const WorksHero = (props: Props) => {
           alignSelf="center"
           spacing={8}
         >
-          {expertises.map(expertise => (
+          {works.nodes.map(work => (
             <ExpertiseCard
-              key={expertise.heading}
-              heading={expertise.heading}
-              subheading={expertise.subheading}
-              icon={expertise.icon}
+              key={work.title}
+              title={work.title}
+              subtitle={work.subtitle}
+              description={work.description}
+              icon={work.icon}
             />
           ))}
         </Stack>

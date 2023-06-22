@@ -3,7 +3,12 @@ import { ExpertiseCardProps } from "@propstypes/particles"
 import { IconCarrot, IconCherry, IconFish } from "@tabler/icons-react"
 import React from "react"
 
-const ExpertiseCard = ({ heading, subheading, icon }: ExpertiseCardProps) => {
+const ExpertiseCard = ({
+  title,
+  subtitle,
+  description,
+  icon,
+}: ExpertiseCardProps) => {
   return (
     <Stack
       as={Box}
@@ -13,27 +18,25 @@ const ExpertiseCard = ({ heading, subheading, icon }: ExpertiseCardProps) => {
       py={12}
       spacing={12}
       rounded="lg"
-      maxW={{ base: "full", md: "xs" }}
+      w={{ sm: "full", md: "xs" }}
     >
       {
         {
-          fish: <Icon as={IconFish} w={24} h={24} color="green.500" />,
-          vegetables: <Icon as={IconCarrot} w={24} h={24} color="green.700" />,
-          cereals: <Icon as={IconCherry} w={24} h={24} color="green.900" />,
+          poissons: <Icon as={IconFish} w={24} h={24} color="green.500" />,
+          legumes: <Icon as={IconCarrot} w={24} h={24} color="green.700" />,
+          cereales: <Icon as={IconCherry} w={24} h={24} color="green.900" />,
         }[icon]
       }
-      <Box>
-        <Text textAlign="left" color="gray.700">
-          {subheading}
-        </Text>
-        <Heading
-          textAlign="left"
-          fontSize="2xl"
-          textTransform="uppercase"
-          my={4}
-        >
-          {heading}
+      <Box w="full">
+        <Heading textAlign="left" fontSize="2xl" textTransform="uppercase">
+          {title}
         </Heading>
+        <Text textAlign="left" color="gray.700" fontSize="sm" fontWeight="bold">
+          {subtitle}
+        </Text>
+        <Text textAlign="left" color="gray.700" mt={4}>
+          {description}
+        </Text>
       </Box>
     </Stack>
   )

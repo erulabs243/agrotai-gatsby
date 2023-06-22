@@ -28,9 +28,7 @@ const StatsCard = ({ amount, description, title, metric }: StatsCardProps) => {
         fontWeight="bold"
         color="green.500"
       >{`+${amount}`}</Text>
-      <Text textAlign="left" fontSize="xl">
-        {description}
-      </Text>
+      <Text textAlign="left">{description}</Text>
     </Stack>
   )
 }
