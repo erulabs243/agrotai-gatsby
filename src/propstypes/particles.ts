@@ -20,3 +20,9 @@ export type HomeTabsProps = {
   image: string
   description: string
 }
+
+export type NavbarLinksProps = {
+  label: string
+  uri: string
+  isButton: boolean
+}

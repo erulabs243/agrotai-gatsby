@@ -98,25 +98,27 @@ const Footer = (props: Props) => {
 
       {/* CONTACTS */}
       <Stack as={Box} flex={1}>
-        <Text fontSize="sm" textTransform="uppercase">
+        <Text fontSize="sm" textTransform="uppercase" color="white">
           L'entreprise
         </Text>
         <Stack direction="column" spacing={2}>
           <Stack direction="row" alignItems="center">
-            <Icon as={IconPhone} w={4} h={4} />
-            <Text>=243 (0) 980 980 980</Text>
+            <Icon as={IconPhone} w={4} h={4} color="gray.200" />
+            <Text color="gray.200">=243 (0) 980 980 980</Text>
           </Stack>
           <Stack direction="row" alignItems="center">
-            <Icon as={IconMail} w={4} h={4} />
+            <Icon as={IconMail} w={4} h={4} color="gray.200" />
             <Link href="mailto:contact@agrotai.com">
-              <Text>contact@agrotai.com</Text>
+              <Text color="gray.200">contact@agrotai.com</Text>
             </Link>
           </Stack>
           <Stack direction="row" alignItems="flex-start">
-            <Icon as={IconMapPin} w={4} h={4} mt={1} />
+            <Icon as={IconMapPin} w={4} h={4} mt={1} color="gray.200" />
             <Box>
-              <Text>123 P.E.Lumumba, Bukavu</Text>
-              <Text fontSize="sm">Sud-KIvu, R.D.Congo</Text>
+              <Text color="gray.200">123 P.E.Lumumba, Bukavu</Text>
+              <Text fontSize="sm" color="gray.200">
+                Sud-KIvu, R.D.Congo
+              </Text>
             </Box>
           </Stack>
         </Stack>
