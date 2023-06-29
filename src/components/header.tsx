@@ -40,7 +40,7 @@ const navbarLinks: Array<NavbarLinksProps> = [
   },
   {
     label: "Crowdfarming",
-    uri: "http://farming.agrotai.com",
+    uri: "/crowdfarming",
     isButton: false,
   },
   {

@@ -5,54 +5,6 @@ import { StoreProductaInterface } from "@propstypes/store"
 import { PageProps, graphql } from "gatsby"
 import React from "react"
 
-type Props = {}
-
-type ProductProps = {
-  id: number
-  name: string
-  slug: string
-  image: string
-  status: string
-}
-/* 
-const products: ProductProps[] = [
-  {
-    id: 1,
-    name: "Tilapia blanc",
-    slug: "tilapia-blanc",
-    image: "https://picsum.photos/id/237/200/300",
-    status: "instock",
-  },
-  {
-    id: 2,
-    name: "Carottes",
-    slug: "carottes",
-    image: "https://picsum.photos/id/123",
-    status: "instock",
-  },
-  {
-    id: 3,
-    name: "Bananes",
-    slug: "bananes",
-    image: "https://picsum.photos/id/234",
-    status: "soon",
-  },
-  {
-    id: 4,
-    name: "Poules",
-    slug: "poules",
-    image: "https://picsum.photos/id/345",
-    status: "outofstock",
-  },
-  {
-    id: 4,
-    name: "Oignons",
-    slug: "oignons",
-    image: "https://picsum.photos/id/456?grayscale",
-    status: "soon",
-  },
-] */
-
 const Boutique: React.FC<PageProps<StoreProductaInterface>> = ({ data }) => {
   const products = data.products.nodes
 
