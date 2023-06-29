@@ -26,3 +26,15 @@ export type NavbarLinksProps = {
   uri: string
   isButton: boolean
 }
+
+type ProductImage = {
+  url: string
+}
+
+export type ProductsGraphProps = {
+  name: string
+  slug: string
+  status: string
+  strapi_id: number
+  image: ProductImage[]
+}

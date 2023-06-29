@@ -9,34 +9,30 @@ import {
   Stack,
   Tag,
 } from "@chakra-ui/react"
+import { ProductsGraphProps } from "@propstypes/particles"
 import React from "react"
+import { SERVER_HOST } from "../../../consts"
 
 export type ProductStatus = "instock" | "outstock" | "soon"
 
-type ProductProps = {
-  id: number
-  name: string
-  slug: string
-  image: string
-  status: string
-}
-
 type Props = {
-  product: ProductProps
+  product: ProductsGraphProps
 }
 
 function ProductCard({ product }: Props) {
   return (
     <Card rounded="lg" my={4} shadow="none">
       <CardBody>
-        <Image
-          src={product.image}
-          alt={product.name}
-          objectPosition="center"
-          objectFit="cover"
-          h={36}
-          w="full"
-        />
+        <Box w="full" mx="auto" h={36} bg="gray.100" p={2} rounded="lg">
+          <Image
+            src={`${SERVER_HOST}${product.image[0].url}`}
+            alt={product.name}
+            objectPosition="center"
+            objectFit="contain"
+            h="full"
+            w="full"
+          />
+        </Box>
         <Stack pt={2}>
           <Heading as="h4" fontSize="2xl">
             {product.name}

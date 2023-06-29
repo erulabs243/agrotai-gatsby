@@ -1,7 +1,8 @@
 import { Box, Container, Heading, SimpleGrid, Text } from "@chakra-ui/react"
 import { Hero, ProductCard } from "@components/store"
 import Layout from "@layouts/layout"
-import { PageProps } from "gatsby"
+import { StoreProductaInterface } from "@propstypes/store"
+import { PageProps, graphql } from "gatsby"
 import React from "react"
 
 type Props = {}
@@ -13,7 +14,7 @@ type ProductProps = {
   image: string
   status: string
 }
-
+/* 
 const products: ProductProps[] = [
   {
     id: 1,
@@ -50,9 +51,11 @@ const products: ProductProps[] = [
     image: "https://picsum.photos/id/456?grayscale",
     status: "soon",
   },
-]
+] */
 
-const Boutique: React.FC<PageProps> = (props: Props) => {
+const Boutique: React.FC<PageProps<StoreProductaInterface>> = ({ data }) => {
+  const products = data.products.nodes
+
   return (
     <Layout>
       {/* Hero */}
@@ -84,5 +87,21 @@ const Boutique: React.FC<PageProps> = (props: Props) => {
     </Layout>
   )
 }
+
+export const query = graphql`
+  query {
+    products: allStrapiProduct(sort: { updatedAt: DESC }) {
+      nodes {
+        name
+        slug
+        status
+        strapi_id
+        image {
+          url
+        }
+      }
+    }
+  }
+`
 
 export default Boutique
