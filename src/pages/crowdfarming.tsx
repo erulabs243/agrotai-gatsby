@@ -1,5 +1,5 @@
 import { Heading, Container, Box, Text } from "@chakra-ui/react"
-import { Hero } from "@components/crowdfarming"
+import { Hero, HowStepper } from "@components/crowdfarming"
 import Layout from "@layouts/layout"
 import { PageProps } from "gatsby"
 import React from "react"
@@ -28,6 +28,8 @@ const Crowdframing: React.FC<PageProps> = (props: Props) => {
           <Text textAlign="center" fontSize="lg">
             Notre manière de procéder en quatre étapes
           </Text>
+
+          <HowStepper />
         </Box>
         </Container>
     </Layout>

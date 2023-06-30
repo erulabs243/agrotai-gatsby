@@ -11,7 +11,7 @@ import { SRCDIR } from "../../consts"
 /**
  * @type {import('gatsby').GatsbyNode['createPages']}
  */
-export const createPages: GatsbyNode["createPages"] = async ({ actions }) => {
+export const createPages: GatsbyNode["createPages"] = async ({ page, actions }) => {
   const { createPage } = actions
 
   const dsgTemplate = path.resolve(`${SRCDIR}/templates/using-dsg.tsx`)
@@ -36,6 +36,7 @@ export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({
         "@templates": path.resolve(`${SRCDIR}/templates`),
         "@layouts": path.resolve(`${SRCDIR}/layouts`),
         "@propstypes": path.resolve(`${SRCDIR}/propstypes`),
+        "@services": path.resolve(`${SRCDIR}/services`)
       },
     },
   })
