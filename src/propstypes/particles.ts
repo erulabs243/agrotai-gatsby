@@ -38,3 +38,31 @@ export type ProductsGraphProps = {
   strapi_id: number
   image: ProductImage[]
 }
+
+export interface StatCard {
+  label: string;
+  amount:number;
+  helperText?: string;
+}
+
+export interface StatCardWithIndicator
+  extends StatCard {
+    statType: "increase" | "decrease";
+    percentage: number;
+}
+
+export interface DepositRow {
+  amount: number;
+  date: Date;
+  campaign: string;
+  campaignStatus: string;
+}
+
+export interface CampaignRow {
+  campaign: string;
+  slug: string;
+  campaignStatus: string;
+  total: number;
+  perceived: number;
+  dueDate: Date;
+}

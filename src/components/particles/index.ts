@@ -4,6 +4,7 @@ import Navlink from "./Navlink"
 import FormHeading from "./FormHeading"
 import FormInput from "./FormInput"
 import FormButton from "./FormButton"
+import LoggedHeader from "./LoggedHeader"
 
 export { 
     ExpertiseCard, 
@@ -11,5 +12,6 @@ export {
     FormHeading, 
     FormInput, 
     Navlink, 
-    StatsCard 
+    StatsCard,
+    LoggedHeader
 }
