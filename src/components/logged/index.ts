@@ -1,7 +1,9 @@
 import DashboardStats from "./DashboardStats";
-import DepositTable from "./DepositTable";
+import CampaignsTable from "./CampaignsTable";
+import InvestingCampaigns from "./InvestingCampaigns";
 
 export {
     DashboardStats,
-    DepositTable
+    CampaignsTable,
+    InvestingCampaigns,
 };

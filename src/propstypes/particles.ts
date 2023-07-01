@@ -64,5 +64,5 @@ export interface CampaignRow {
   campaignStatus: string;
   total: number;
   perceived: number;
-  dueDate: Date;
+  dueDate?: string;
 }

@@ -1,5 +1,5 @@
-import { Box, Heading, Stack } from '@chakra-ui/react'
-import { DashboardStats, DepositTable } from '@components/logged'
+import { Box, HStack, Heading, Stack } from '@chakra-ui/react'
+import { CampaignsTable, DashboardStats, InvestingCampaigns, } from '@components/logged'
 import LoggedLayout from '@layouts/logged'
 import React from 'react'
 
@@ -9,16 +9,22 @@ const Dashboard = (props) => {
 
     return (
     <LoggedLayout username={props.params.username}>
+      {/* Overall stats */}
       <DashboardStats />
 
-      <Stack 
-        direction="row" 
-        gap={{base: 4, md: 12}}
-        >
-          <Box w="60%">
-            <DepositTable />
-          </Box>
-      </Stack>
+      {/* List all campaigns */}
+      <CampaignsTable />
+
+      {/* List campaigns in which the user invested in */}
+      <HStack
+        my={{base: 4, md: 12}}
+        mx="auto"
+        w="70%"
+        gap={8}  
+      >
+        <InvestingCampaigns />
+        <InvestingCampaigns />
+      </HStack>
     </LoggedLayout>
   )
 }

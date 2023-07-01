@@ -31,9 +31,9 @@ function DashboardStats() {
         {stats.map(stat => 
             <Stat 
                 key={stat.label}
-                borderWidth={1}
-                py={2}    
-                px={4}
+                py={4}    
+                px={8}
+                bg="gray.100"
                 rounded="lg"
             >
                 <StatLabel>{stat.label}</StatLabel>

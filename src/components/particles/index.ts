@@ -5,6 +5,9 @@ import FormHeading from "./FormHeading"
 import FormInput from "./FormInput"
 import FormButton from "./FormButton"
 import LoggedHeader from "./LoggedHeader"
+import CampaignTag from "./CampaignTag"
+import CampaignDate from "./CampaignDate"
+import CampaignProgress from "./CampaignProgress"
 
 export { 
     ExpertiseCard, 
@@ -13,5 +16,8 @@ export {
     FormInput, 
     Navlink, 
     StatsCard,
-    LoggedHeader
+    LoggedHeader,
+    CampaignTag,
+    CampaignDate,
+    CampaignProgress
 }
