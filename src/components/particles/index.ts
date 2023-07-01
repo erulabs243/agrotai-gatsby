@@ -8,6 +8,7 @@ import LoggedHeader from "./LoggedHeader"
 import CampaignTag from "./CampaignTag"
 import CampaignDate from "./CampaignDate"
 import CampaignProgress from "./CampaignProgress"
+import LoggedHeading from "./LoggedHeading"
 
 export { 
     ExpertiseCard, 
@@ -19,5 +20,6 @@ export {
     LoggedHeader,
     CampaignTag,
     CampaignDate,
-    CampaignProgress
+    CampaignProgress,
+    LoggedHeading
 }

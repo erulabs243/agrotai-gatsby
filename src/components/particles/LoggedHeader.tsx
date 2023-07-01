@@ -19,6 +19,7 @@ import {
 import { NavbarLinksProps } from "@propstypes/particles"
 import { Navlink } from "@components/particles"
 import {  IconHome2, IconLogout2, IconMenu2, IconTable, IconUser } from "@tabler/icons-react"
+import { navigate } from "gatsby"
 
 type Props = {
   siteTitle: string;
@@ -115,6 +116,7 @@ const LoggedHeader = ({ siteTitle, username }: Props) => (
                           as={IconHome2} 
                         />
                       }
+                      onClick={() => navigate(`/${username}/dashboard`)}
                     >
                       Tableau de bord
                     </Button>
