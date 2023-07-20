@@ -24,14 +24,13 @@ function ProductCard({ product }: Props) {
     <Card rounded="lg" my={4} shadow="none">
       <CardBody>
         <Box w="full" mx="auto" h={36} bg="gray.100" p={2} rounded="lg">
-          <Image
-            src={`${SERVER_HOST}${product.image[0].url}`}
+          {product.image && <Image
             alt={product.name}
             objectPosition="center"
             objectFit="contain"
             h="full"
             w="full"
-          />
+          />}
         </Box>
         <Stack pt={2}>
           <Heading as="h4" fontSize="2xl">

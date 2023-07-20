@@ -1,14 +1,54 @@
-import { Stack, Box, Link, Text, Button } from '@chakra-ui/react'
-import { FormButton, FormHeading, FormInput } from '@components/particles'
+import { Stack, Box, Link, Text, Button, Input, FormControl, FormLabel, FormErrorMessage, Alert, AlertIcon } from '@chakra-ui/react'
+import { FormHeading } from '@components/particles'
 import Layout from '@layouts/layout'
+import { loginSchema, loginType } from '@propstypes/schemas/login.schema'
 import { navigate } from 'gatsby'
 import React from 'react'
+import { useForm } from 'react-hook-form'
+import {yupResolver} from '@hookform/resolvers/yup'
+import axios from 'axios'
+
+
 
 const Login: React.FC = () => {
 
-  const handleSubmit = () => {
-    navigate('/ligantoine02/dashboard');
-    return null;
+  const [authError, setAuthError] = React.useState<string>('');
+  const [isSubmitting, setIsSubmitting] = React.useState<boolean>(false);
+
+  const values: loginType = {
+    username: '',
+    password: '',
+  }
+
+    const {
+      register,
+      handleSubmit,
+      formState: {errors}
+    } = useForm({
+      defaultValues: values,
+      resolver: yupResolver(loginSchema)
+    });
+
+  const formSubmit = async (values: loginType) => {
+    console.log(values)
+    try {
+      const authRes = await axios.post("http://localhost:1337/api/auth/local", {
+        identifier: values.username,
+        password: values.password
+      })
+
+      console.log(JSON.stringify(authRes, null, 2))
+
+      if(authRes) {
+        const res = authRes.data
+        localStorage.setItem('authToken', res.jwt)
+        localStorage.setItem('lastLogged', Date.now().toString())
+        navigate(`/${res.user.username}/dashboard`)
+      }
+      else setAuthError("Identifiant ou mot de passe invalide")
+    } catch(err) {
+      setAuthError("Identifiant ou mot de passe invalide")
+    }
   }
 
   return (
@@ -27,19 +67,23 @@ const Login: React.FC = () => {
               heading="Connexion" 
               subheading="Accedez à plus d'opportunites" />
 
-              <Stack direction="column">
-                <FormInput 
-                  name="username" 
-                  label='Utilisateur/e-mail' 
-                  onChange={() =>console.log('email')} 
-                  type="text" 
-                  />
-                  <FormInput 
-                    name="password"
-                    label="Mot de passe"
-                    type="password"
-                    onChange={() => console.log('password')}
-                  />
+                <form method='post'>
+                  <Stack direction="column">
+                    {authError && <Alert my={2} status="error">
+                      <AlertIcon />
+                      {authError}
+                      </Alert>
+                    }
+                    <FormControl my={2} isRequired isInvalid={'username' in errors}>
+                      <FormLabel fontSize="sm" color="gray.700">Utilisateur/e-mail</FormLabel>
+                      <Input type='text' {...register('username')} />
+                      <FormErrorMessage>{errors.username?.message}</FormErrorMessage>
+                    </FormControl>
+                    <FormControl my={2} isRequired isInvalid={'password' in errors}>
+                      <FormLabel fontSize="sm" color="gray.700">Mot de passe</FormLabel>
+                      <Input type="password" {...register('password')} />
+                      <FormErrorMessage>{errors.password?.message}</FormErrorMessage>
+                  </FormControl>
                   <Link 
                     href='#' 
                     textAlign="right" 
@@ -53,10 +97,7 @@ const Login: React.FC = () => {
                     alignItems="center"
                     justifyContent="space-between"
                   >
-                    <FormButton 
-                      label="Se connecter" 
-                      fn={handleSubmit} 
-                    />
+                    <Button type="submit" isLoading={isSubmitting} onClick={handleSubmit(formSubmit)}>Se connecter</Button>
                     <Text>ou</Text>
                     <Button
                       my={4}
@@ -68,6 +109,7 @@ const Login: React.FC = () => {
                     </Button>
                   </Stack>
               </Stack>
+              </form>
           </Box>
         </Stack>
     </Layout>

@@ -6,7 +6,7 @@
  */
 
 import * as React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, navigate } from "gatsby"
 
 import Header from "@components/header"
 import { Container } from "@chakra-ui/react"
@@ -29,25 +29,34 @@ const LoggedLayout = ({ username, children }: Props) => {
     }
   `)
 
-  return (
-    <>
-      <Container w="100%" maxW="100%" p={0}>
-        <LoggedHeader 
-          siteTitle="Agrptai" 
-          username={username} 
-        />
-        <Container 
-          w={{base: 'full', md: '85vw'}}
-          maxW={{base: 'full', md: '85vw'}}  
-          p={{base: 4, md: 8}}
-          mx="auto"
-        >
-          {children}
+  const isLogged = () => {
+    const authToken = localStorage.getItem('authToken');
+    return authToken ? authToken : undefined;
+  }
+
+  if(isLogged()) 
+    return (
+      <>
+        <Container w="100%" maxW="100%" p={0}>
+          <LoggedHeader 
+            siteTitle="Agrotai" 
+            username={username} 
+          />
+          <Container 
+            w={{base: 'full', md: '85vw'}}
+            maxW={{base: 'full', md: '85vw'}}  
+            p={{base: 4, md: 8}}
+            mx="auto"
+          >
+            {children}
+          </Container>
+          <Footer />
         </Container>
-        <Footer />
-      </Container>
-    </>
-  )
+      </>
+    )
+  
+    else
+      navigate('/auth/login')
 }
 
 export default LoggedLayout

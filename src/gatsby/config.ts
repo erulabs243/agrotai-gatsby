@@ -36,6 +36,10 @@ export default {
           "home-stat",
           "sale",
           "service",
+          'post',
+          "career",
+          "career-request",
+          "tour"
         ],
         queryLimit: 1000,
       },
