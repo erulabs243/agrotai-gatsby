@@ -12,6 +12,8 @@ import Header from "@components/header"
 import { Container } from "@chakra-ui/react"
 import Footer from "@components/footer"
 import { LoggedHeader } from "@components/particles"
+import { useAtomValue } from "jotai"
+import { authTokenAtom } from "../atoms"
 
 type Props = {
   username: string;
@@ -29,9 +31,11 @@ const LoggedLayout = ({ username, children }: Props) => {
     }
   `)
 
+  const authTokenValue = useAtomValue(authTokenAtom)
+
   const isLogged = () => {
-    const authToken = localStorage.getItem('authToken');
-    return authToken ? authToken : undefined;
+    const authToken = localStorage.getItem('agrotai-authToken');
+    return authToken && authTokenValue ? true : false;
   }
 
   if(isLogged()) 

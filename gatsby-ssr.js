@@ -7,6 +7,16 @@
 /**
  * @type {import('gatsby').GatsbySSR['onRenderBody']}
  */
-exports.onRenderBody = ({ setHtmlAttributes }) => {
+
+import React from 'react'
+import { Provider } from 'jotai'
+
+export const onRenderBody = ({ setHtmlAttributes }) => {
   setHtmlAttributes({ lang: `en` })
 }
+
+export const wrapRootElement = ({element}) => (
+  <Provider>
+    {element}
+  </Provider>
+)

@@ -7,10 +7,14 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import {yupResolver} from '@hookform/resolvers/yup'
 import axios from 'axios'
+import { useSetAtom } from 'jotai'
+import { authTokenAtom } from '../../atoms'
 
 
 
 const Login: React.FC = () => {
+
+  const setAuthTokenAtom = useSetAtom(authTokenAtom)
 
   const [authError, setAuthError] = React.useState<string>('');
   const [isSubmitting, setIsSubmitting] = React.useState<boolean>(false);
@@ -30,6 +34,7 @@ const Login: React.FC = () => {
     });
 
   const formSubmit = async (values: loginType) => {
+    setIsSubmitting(true);
     console.log(values)
     try {
       const authRes = await axios.post("http://localhost:1337/api/auth/local", {
@@ -37,18 +42,21 @@ const Login: React.FC = () => {
         password: values.password
       })
 
-      console.log(JSON.stringify(authRes, null, 2))
-
       if(authRes) {
         const res = authRes.data
-        localStorage.setItem('authToken', res.jwt)
-        localStorage.setItem('lastLogged', Date.now().toString())
+        setAuthTokenAtom(res.jwt)
+        localStorage.setItem('agrotai-authToken', res.jwt)
+        localStorage.setItem('agrotai-lastLogged', Date.now().toString())
         navigate(`/${res.user.username}/dashboard`)
       }
       else setAuthError("Identifiant ou mot de passe invalide")
+      setIsSubmitting(false);
     } catch(err) {
       setAuthError("Identifiant ou mot de passe invalide")
+      setIsSubmitting(false);
     }
+
+    setIsSubmitting(false);
   }
 
   return (
@@ -97,12 +105,19 @@ const Login: React.FC = () => {
                     alignItems="center"
                     justifyContent="space-between"
                   >
-                    <Button type="submit" isLoading={isSubmitting} onClick={handleSubmit(formSubmit)}>Se connecter</Button>
+                    <Button 
+                      type="submit" 
+                      isLoading={isSubmitting} 
+                      colorScheme='green'
+                      onClick={handleSubmit(formSubmit)}
+                    >
+                      Se connecter
+                    </Button>
                     <Text>ou</Text>
                     <Button
                       my={4}
                       variant="outline"
-                      colorScheme="green"
+                      colorScheme="gray"
                       onClick={() => navigate('/auth/register')}
                     >
                       Créer un compte

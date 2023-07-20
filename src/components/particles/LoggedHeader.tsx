@@ -20,6 +20,8 @@ import { NavbarLinksProps } from "@propstypes/particles"
 import { Navlink } from "@components/particles"
 import {  IconHome2, IconLogout2, IconMenu2, IconTable, IconUser } from "@tabler/icons-react"
 import { navigate } from "gatsby"
+import { useSetAtom } from "jotai"
+import { authTokenAtom } from "../../atoms"
 
 type Props = {
   siteTitle: string;
@@ -49,7 +51,18 @@ const navbarLinks: Array<NavbarLinksProps> = [
   },
 ]
 
-const LoggedHeader = ({ siteTitle, username }: Props) => (
+const LoggedHeader = ({ siteTitle, username }: Props) => {
+
+  const setAuthToken = useSetAtom(authTokenAtom)
+
+  const logout = () => {
+    setAuthToken('')
+    localStorage.removeItem('agrotai-authToken')
+    localStorage.removeItem('agrotai-lastLogged')
+    navigate('/')
+  }
+
+  return(
   <Box
     as="header"
     w="full"
@@ -165,6 +178,7 @@ const LoggedHeader = ({ siteTitle, username }: Props) => (
                           as={IconLogout2} 
                         />
                       }
+                      onClick={logout}
                     >
                       Deconnexion
                     </Button>
@@ -215,6 +229,6 @@ const LoggedHeader = ({ siteTitle, username }: Props) => (
       </HStack>
     </Container>
   </Box>
-)
+)}
 
 export default LoggedHeader

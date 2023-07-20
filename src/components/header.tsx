@@ -45,7 +45,7 @@ const navbarLinks: Array<NavbarLinksProps> = [
   },
   {
     label: "Participer à la campagne",
-    uri: "http://farming.agrotai.com/login",
+    uri: "/auth/login",
     isButton: true,
   },
 ]
