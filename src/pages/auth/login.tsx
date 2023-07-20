@@ -9,6 +9,7 @@ import {yupResolver} from '@hookform/resolvers/yup'
 import axios from 'axios'
 import { useSetAtom } from 'jotai'
 import { authTokenAtom } from '../../atoms'
+import { encryptedStorage } from '../../utils'
 
 
 
@@ -45,8 +46,8 @@ const Login: React.FC = () => {
       if(authRes) {
         const res = authRes.data
         setAuthTokenAtom(res.jwt)
-        localStorage.setItem('agrotai-authToken', res.jwt)
-        localStorage.setItem('agrotai-lastLogged', Date.now().toString())
+        encryptedStorage.setItem('authToken', res.jwt)
+        encryptedStorage.setItem('lastLogged', Date.now().toString())
         navigate(`/${res.user.username}/dashboard`)
       }
       else setAuthError("Identifiant ou mot de passe invalide")

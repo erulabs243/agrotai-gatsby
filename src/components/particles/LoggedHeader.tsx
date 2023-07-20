@@ -22,6 +22,7 @@ import {  IconHome2, IconLogout2, IconMenu2, IconTable, IconUser } from "@tabler
 import { navigate } from "gatsby"
 import { useSetAtom } from "jotai"
 import { authTokenAtom } from "../../atoms"
+import { encryptedStorage } from "../../utils"
 
 type Props = {
   siteTitle: string;
@@ -57,8 +58,8 @@ const LoggedHeader = ({ siteTitle, username }: Props) => {
 
   const logout = () => {
     setAuthToken('')
-    localStorage.removeItem('agrotai-authToken')
-    localStorage.removeItem('agrotai-lastLogged')
+    encryptedStorage.removeItem('authToken')
+    encryptedStorage.removeItem('lastLogged')
     navigate('/')
   }
 

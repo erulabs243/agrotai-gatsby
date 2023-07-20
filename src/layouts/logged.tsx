@@ -14,6 +14,7 @@ import Footer from "@components/footer"
 import { LoggedHeader } from "@components/particles"
 import { useAtomValue } from "jotai"
 import { authTokenAtom } from "../atoms"
+import { encryptedStorage } from "../utils"
 
 type Props = {
   username: string;
@@ -34,7 +35,7 @@ const LoggedLayout = ({ username, children }: Props) => {
   const authTokenValue = useAtomValue(authTokenAtom)
 
   const isLogged = () => {
-    const authToken = localStorage.getItem('agrotai-authToken');
+    const authToken = encryptedStorage.getItem('authToken');
     return authToken && authTokenValue ? true : false;
   }
 

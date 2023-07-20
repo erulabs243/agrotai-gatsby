@@ -17,6 +17,7 @@
     "apexcharts": "^3.41.0",
     "axios": "^1.4.0",
     "dotenv": "^16.3.1",
+    "encrypt-storage": "^2.12.16",
     "framer-motion": "^10.12.16",
     "gatsby": "^5.11.0",
     "gatsby-plugin-image": "^3.11.0",
