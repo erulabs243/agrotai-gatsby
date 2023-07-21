@@ -66,3 +66,42 @@ export interface CampaignRow {
   perceived: number;
   dueDate?: string;
 }
+
+export interface ITag {
+  id: number;
+  title: string;
+  slug?: string;
+}
+
+export interface IPost {
+  strapi_id: number;
+  slug: number;
+}
+
+export interface BlogPost extends IPost {
+  title: string;
+  excerpt: string;
+  updatedAt: string;
+  tags: ITag[]
+  cover : {
+    localFile: {
+      childImageSharp: {
+        fixed: {
+          src: string;
+        }
+      }
+    }
+  }
+}
+
+export interface IBlogPost extends BlogPost {
+  subtitle: string;
+  content: {
+    data: {
+      content: string;
+    }
+    medias: Array<{
+      url: string;
+    }>
+  }
+}

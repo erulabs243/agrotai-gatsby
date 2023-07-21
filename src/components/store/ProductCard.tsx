@@ -20,11 +20,15 @@ type Props = {
 }
 
 function ProductCard({ product }: Props) {
+
+  console.log(product)
+
   return (
     <Card rounded="lg" my={4} shadow="none">
       <CardBody>
         <Box w="full" mx="auto" h={36} bg="gray.100" p={2} rounded="lg">
           {product.image && <Image
+            src={`${SERVER_HOST}${product.image.url}`}
             alt={product.name}
             objectPosition="center"
             objectFit="contain"

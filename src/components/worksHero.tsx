@@ -3,6 +3,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import { ExpertiseCard } from "@components/particles"
 import React from "react"
 import { HomeWorkInterface } from "@propstypes/home"
+import { Fade } from "react-awesome-reveal"
 
 const WorksHero = () => {
   const { works } = useStaticQuery<HomeWorkInterface>(graphql`
@@ -17,8 +18,6 @@ const WorksHero = () => {
       }
     }
   `)
-
-  console.log(works)
 
   return (
     <Container w="100%" maxW="100%">
@@ -41,6 +40,7 @@ const WorksHero = () => {
           alignSelf="center"
           spacing={8}
         >
+          <Fade cascade>
           {works.nodes.map(work => (
             <ExpertiseCard
               key={work.title}
@@ -50,6 +50,7 @@ const WorksHero = () => {
               icon={work.icon}
             />
           ))}
+          </Fade>
         </Stack>
       </Stack>
     </Container>

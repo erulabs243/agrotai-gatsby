@@ -29,7 +29,7 @@ const Layout = ({ children }: Props) => {
 
   return (
     <>
-      <Container w="100%" maxW="100%" p={0}>
+      <Container w="100vw" maxW="100vw" p={0}>
         <Header siteTitle="Agrotai" />
         <main>{children}</main>
         <Footer />

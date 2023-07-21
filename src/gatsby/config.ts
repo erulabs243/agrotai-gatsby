@@ -39,7 +39,8 @@ export default {
           'post',
           "career",
           "career-request",
-          "tour"
+          "tour",
+          "tag"
         ],
         queryLimit: 1000,
       },

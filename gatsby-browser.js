@@ -7,6 +7,7 @@
 // You can delete this file if you're not using it
 import "@fontsource/barlow";
 import "@fontsource/dm-sans";
+import "animate.css/animate.min.css";
 
 import React from "react";
 import {Provider} from 'jotai'

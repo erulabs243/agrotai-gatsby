@@ -2,18 +2,19 @@ import { Box, HStack, Heading, Stack } from '@chakra-ui/react'
 import { CampaignsTable, DashboardStats, InvestingCampaigns, } from '@components/logged'
 import LoggedLayout from '@layouts/logged'
 import React from 'react'
+import { getCampaignsData } from '../../api/campaign'
 
-const Dashboard = (props) => {
+const Dashboard = ({serverData}) => {
 
-    console.log(props.params)
 
     return (
-    <LoggedLayout username={props.params.username}>
+    <LoggedLayout username="Tableau de bord">
       {/* Overall stats */}
       <DashboardStats />
 
       {/* List all campaigns */}
       <CampaignsTable />
+      <h1>dfgfg</h1>
 
       {/* List campaigns in which the user invested in */}
       <HStack
@@ -28,5 +29,29 @@ const Dashboard = (props) => {
     </LoggedLayout>
   )
 }
+
+export async function getServerData() {
+  return {
+    props: {},
+    status: 200
+  }
+}
+/* 
+export async function getServerData(){
+  try{
+    return {
+      props: {campaigns: await getCampaignsData()},
+      status: 200
+    }
+  }catch(e){
+    return {
+      props: {
+        campaigns: []
+      },
+      status: 500
+    }
+  }
+} */
+
 
 export default Dashboard

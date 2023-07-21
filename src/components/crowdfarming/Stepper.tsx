@@ -1,4 +1,4 @@
-import { Box, Step, StepDescription, StepIndicator, StepNumber, StepSeparator, StepStatus, StepTitle, Stepper, Text, useSteps } from '@chakra-ui/react';
+import { Box, Button, Step, StepDescription, StepIndicator, StepNumber, StepSeparator, StepStatus, StepTitle, Stepper, Text, useSteps } from '@chakra-ui/react';
 import React from 'react'
 
 type StepType = {
@@ -35,7 +35,8 @@ function HowStepper() {
     });
 
   return (
-    <Stepper index={activeStep} orientation='vertical' gap={8} size="lg" colorScheme='green' my={16} mx='auto' p={8} w='lg' >
+    <Stepper index={activeStep} orientation='vertical' gap={8} size="lg" colorScheme='green' my={16} mx='auto' py={8} 
+        w={{base: '100vw', lg: 'lg'}} >
         {steps.map((step, index) => (
             <Step key={index} onClick={() => setActiveStep(index)}>
                 <StepIndicator>
@@ -46,9 +47,12 @@ function HowStepper() {
                     />
                 </StepIndicator>
 
-                <Box>
+                <Box w={{base: "70vw", lg: 'full'}}>
                     <StepTitle><Text>{step.title}</Text></StepTitle>
                     <StepDescription>{step.description}</StepDescription>
+                    {step.icon === 'login' && <Button colorScheme='green'
+                        my={2}
+                    >Participer aux campagnes</Button>}
                 </Box>
                 
                 <StepSeparator />

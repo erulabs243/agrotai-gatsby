@@ -6,7 +6,7 @@ const StatsCard = ({ amount, description, title, metric }: StatsCardProps) => {
   return (
     <Stack
       as={Box}
-      w={{ base: "full", md: "sm" }}
+      w={{ base: "92vw", md: "sm" }}
       px={{ base: 8, md: 8 }}
       py={{ base: 8, md: 16 }}
       spacing={4}

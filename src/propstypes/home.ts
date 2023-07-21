@@ -1,4 +1,4 @@
-import { ExpertiseCardProps, StatsCardProps } from "@propstypes/particles"
+import { BlogPost, ExpertiseCardProps, StatsCardProps } from "@propstypes/particles"
 
 export interface HomeStatsInterface {
   stats: {
@@ -9,5 +9,11 @@ export interface HomeStatsInterface {
 export interface HomeWorkInterface {
   works: {
     nodes: ExpertiseCardProps[]
+  }
+}
+
+export interface BlogInterface {
+  posts: {
+    nodes: BlogPost[]
   }
 }

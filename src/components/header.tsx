@@ -5,6 +5,7 @@ import {
   Container,
   HStack,
   Icon,
+  Image,
   Link,
   Menu,
   MenuButton,
@@ -16,7 +17,8 @@ import {
 } from "@chakra-ui/react"
 import { NavbarLinksProps } from "@propstypes/particles"
 import { Navlink } from "@components/particles"
-import { IconMenu, IconMenu2 } from "@tabler/icons-react"
+import { IconMenu2 } from "@tabler/icons-react"
+import { SERVER_HOST } from "../../consts"
 
 type Props = {
   siteTitle: string
@@ -34,13 +36,13 @@ const navbarLinks: Array<NavbarLinksProps> = [
     isButton: false,
   },
   {
-    label: "Qui sommes-nous",
-    uri: "/about",
+    label: "Crowdfarming",
+    uri: "/crowdfarming",
     isButton: false,
   },
   {
-    label: "Crowdfarming",
-    uri: "/crowdfarming",
+    label: "Qui sommes-nous",
+    uri: "/about",
     isButton: false,
   },
   {
@@ -57,14 +59,23 @@ const Header = ({ siteTitle }: Props) => (
     py={4}
     position="sticky"
     top={0}
-    backdropFilter="blur(7px) hue-rotate(60deg)"
+    bg="blackAlpha.300"
     zIndex={1000}
   >
     <Container mx="auto" w={{ base: "95vw", lg: "70vw" }} maxW="full" py={2}>
       <HStack>
         <Box>
           <Link href="/">
-            <Text>{siteTitle}</Text>
+            <HStack gap={4}>
+              <Image 
+                src={`${SERVER_HOST}/uploads/logo_icon_685d01ff8a.png`} 
+                alt={siteTitle}
+                w={6} h={6}
+                objectFit="cover"
+                objectPosition="center"
+              />
+              <Text fontSize="2xl">{siteTitle}</Text>
+            </HStack>
           </Link>
         </Box>
 

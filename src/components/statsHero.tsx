@@ -4,6 +4,7 @@ import { Container, Stack, Heading, Text, Box } from "@chakra-ui/react"
 import { StatsCardProps } from "@propstypes/particles"
 import { StatsCard } from "@components/particles"
 import { HomeStatsInterface } from "@propstypes/home"
+import { Fade, Slide } from "react-awesome-reveal"
 
 const StatsHero = () => {
   const { stats } = useStaticQuery<HomeStatsInterface>(graphql`
@@ -20,12 +21,16 @@ const StatsHero = () => {
   `)
 
   return (
-    <Container w="100%" maxW="100%" bg="green.500">
+    <Fade duration={2000} delay={500}>
+    <Container w="100vw" maxW="100vw" bg="green.500">
       <Stack
         as={Box}
+        mx={0}
+        w="100vw"
         py={{ base: 24, md: 32 }}
         textAlign="center"
         spacing={{ base: 16, md: 24 }}
+        backdropFilter="auto" backdropBlur="xs"
       >
         <Heading textTransform="uppercase" fontWeight="bold">
           En{" "}
@@ -41,18 +46,21 @@ const StatsHero = () => {
           alignSelf="center"
           spacing={8}
         >
-          {stats.nodes.map(stat => (
-            <StatsCard
-              key={stat.amount}
-              amount={stat.amount}
-              description={stat.description}
-              title={stat.title}
-              metric={stat.metric}
-            />
-          ))}
+          <Fade cascade>
+            {stats.nodes.map(stat => (
+              <StatsCard
+                key={stat.amount}
+                amount={stat.amount}
+                description={stat.description}
+                title={stat.title}
+                metric={stat.metric}
+              />
+            ))}
+          </Fade>
         </Stack>
       </Stack>
     </Container>
+    </Fade>
   )
 }
 

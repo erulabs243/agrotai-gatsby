@@ -36,7 +36,7 @@ const LoggedLayout = ({ username, children }: Props) => {
 
   const isLogged = () => {
     const authToken = encryptedStorage.getItem('authToken');
-    return authToken && authTokenValue ? true : false;
+    return authToken ? true : false;
   }
 
   if(isLogged()) 

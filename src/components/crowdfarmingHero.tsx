@@ -14,6 +14,7 @@ import {
   Show,
 } from "@chakra-ui/react"
 import { HomeTabsProps } from "@propstypes/particles"
+import { Zoom } from "react-awesome-reveal"
 
 type Props = {}
 
@@ -78,14 +79,16 @@ const CrowdfarmingHero = (props: Props) => {
               <TabPanels>
                 {tabs.map((tab: HomeTabsProps, idx: number) => (
                   <TabPanel key={idx} px={8}>
-                    <Image
-                      alt={tab.heading}
-                      src={tab.image}
-                      h={96}
-                      w="full"
-                      fit="cover"
-                      rounded="lg"
-                    />
+                    <Zoom duration={2000}>
+                      <Image
+                        alt={tab.heading}
+                        src={tab.image}
+                        h={96}
+                        w="full"
+                        fit="cover"
+                        rounded="lg"
+                      />
+                    </Zoom>
                   </TabPanel>
                 ))}
               </TabPanels>

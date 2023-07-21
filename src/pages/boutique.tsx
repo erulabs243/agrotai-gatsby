@@ -4,6 +4,7 @@ import Layout from "@layouts/layout"
 import { StoreProductaInterface } from "@propstypes/store"
 import { PageProps, graphql } from "gatsby"
 import React from "react"
+import { Fade, Slide } from "react-awesome-reveal"
 
 const Boutique: React.FC<PageProps<StoreProductaInterface>> = ({ data }) => {
   const products = data.products.nodes
@@ -31,9 +32,11 @@ const Boutique: React.FC<PageProps<StoreProductaInterface>> = ({ data }) => {
           </Text>
         </Box>
         <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} columnGap={4}>
-          {products.map(product => (
-            <ProductCard key={product.slug} product={product} />
-          ))}
+          <Fade damping={.3} cascade>
+            {products.map(product => (
+              <ProductCard key={product.slug} product={product} />
+            ))}
+          </Fade>
         </SimpleGrid>
       </Container>
     </Layout>
