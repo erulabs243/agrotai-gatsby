@@ -43,7 +43,7 @@ type PostResult = {
     }
 }
 
-const newThene = {
+const newTheme = {
     h1: props => {
         const {children} = props
         return <Text mb={2} fontSize="2xl" fontWeight="bold">{children}</Text>
@@ -66,7 +66,7 @@ const newThene = {
     }
 }
 
-const Post: React.FC<PageProps<PostResult>> = ({data, pageContext}) => {
+const Post: React.FC<PageProps<PostResult>> = ({data}) => {
 
     const post = data.strapiPost
 
@@ -109,7 +109,7 @@ const Post: React.FC<PageProps<PostResult>> = ({data, pageContext}) => {
             >
                 <ReactMarkdown 
                     children={post.content.data.content}  
-                    components={ChakraUIRenderer(newThene)}
+                    components={ChakraUIRenderer(newTheme)}
                     skipHtml
                 />
             </Stack>

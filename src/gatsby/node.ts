@@ -7,7 +7,7 @@
 import { GatsbyNode, graphql } from "gatsby"
 import path from "path"
 import { SRCDIR } from "../../consts"
-import { IPost } from "@propstypes/particles"
+import { ICareerNode, IPost } from "@propstypes/particles"
 
 /**
  * @type {import('gatsby').GatsbyNode['createPages']}
@@ -17,13 +17,20 @@ export const createPages: GatsbyNode["createPages"] = async ({ graphql, page, ac
 
   const dsgTemplate = path.resolve(`${SRCDIR}/templates/using-dsg.tsx`)
   const postTemplate = path.resolve(`${SRCDIR}/templates/post.tsx`)
+  const careerTemplate = path.resolve(`${SRCDIR}/templates/career.tsx`)
 
   const results = await graphql(`
-      query {
+    query {
       allStrapiPost(sort: {updatedAt: ASC}) {
         nodes {
           strapi_id
           slug
+        }
+      }
+      allStrapiCareer {
+        nodes {
+          strapi_id
+          career
         }
       }
     }
@@ -45,6 +52,17 @@ export const createPages: GatsbyNode["createPages"] = async ({ graphql, page, ac
         }
       })
   });
+
+  const careers = results.data.allStrapiCareer.nodes
+  careers.forEach((career: ICareerNode) => {
+    createPage({
+      path: `/careers/${career.strapi_id}`,
+      component: careerTemplate,
+      context: {
+        id: career.strapi_id
+      }
+    })
+  })
 
   createPage({
     path: "/using-dsg",

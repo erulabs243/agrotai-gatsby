@@ -78,6 +78,11 @@ export interface IPost {
   slug: number;
 }
 
+export interface ICareerNode {
+  strapi_id: number;
+  career: string;
+}
+
 export interface BlogPost extends IPost {
   title: string;
   excerpt: string;
@@ -104,4 +109,20 @@ export interface IBlogPost extends BlogPost {
       url: string;
     }>
   }
+}
+
+export interface ICareer {
+  career: string;
+      cover: {
+        localFile: {
+          childImageSharp: {
+            fixed: {
+              src: string;
+            }
+          }
+        }
+      }
+      strapi_id: number;
+      updatedAt: string;
+      description: string;
 }

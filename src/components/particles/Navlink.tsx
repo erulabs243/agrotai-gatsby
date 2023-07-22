@@ -45,7 +45,7 @@ function Navlink({ label, uri, isButton }: NavbarLinksProps) {
             >Actualités</MenuItem>
             <MenuItem 
               as={Link} 
-              href="/carreers" 
+              href="/careers" 
               py={2}
               px={4}
               rounded="lg"
