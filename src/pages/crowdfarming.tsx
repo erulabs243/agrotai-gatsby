@@ -1,12 +1,10 @@
-import { Heading, Container, Box, Text } from "@chakra-ui/react"
-import { Hero, HowStepper } from "@components/crowdfarming"
-import Layout from "@layouts/layout"
-import { PageProps } from "gatsby"
-import React from "react"
+import { Heading, Container, Box, Text } from "@chakra-ui/react";
+import { Hero, HowStepper } from "@components/crowdfarming";
+import Layout from "@layouts/layout";
+import { PageProps } from "gatsby";
+import React from "react";
 
-type Props = {}
-
-const Crowdframing: React.FC<PageProps> = (props: Props) => {
+const Crowdframing: React.FC<PageProps> = () => {
   return (
     <Layout>
       {/* HERO */}
@@ -31,9 +29,9 @@ const Crowdframing: React.FC<PageProps> = (props: Props) => {
 
           <HowStepper />
         </Box>
-        </Container>
+      </Container>
     </Layout>
-  )
-}
+  );
+};
 
-export default Crowdframing
+export default Crowdframing;

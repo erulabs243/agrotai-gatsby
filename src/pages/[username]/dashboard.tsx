@@ -1,13 +1,17 @@
-import { Box, HStack, Heading, Stack } from '@chakra-ui/react'
-import { CampaignsTable, DashboardStats, InvestingCampaigns, } from '@components/logged'
-import LoggedLayout from '@layouts/logged'
-import React from 'react'
-import { getCampaignsData } from '../../api/campaign'
+import { HStack } from "@chakra-ui/react";
+import {
+  CampaignsTable,
+  DashboardStats,
+  InvestingCampaigns,
+} from "@components/logged";
+import LoggedLayout from "@layouts/logged";
+import { PageProps } from "gatsby";
+import React from "react";
 
-const Dashboard = ({serverData}) => {
+const Dashboard: React.FC<PageProps> = ({ serverData }) => {
+  console.log(JSON.stringify(serverData, null, 2));
 
-
-    return (
+  return (
     <LoggedLayout username="Tableau de bord">
       {/* Overall stats */}
       <DashboardStats />
@@ -17,24 +21,19 @@ const Dashboard = ({serverData}) => {
       <h1>dfgfg</h1>
 
       {/* List campaigns in which the user invested in */}
-      <HStack
-        my={{base: 4, md: 12}}
-        mx="auto"
-        w="70%"
-        gap={8}  
-      >
+      <HStack my={{ base: 4, md: 12 }} mx="auto" w="70%" gap={8}>
         <InvestingCampaigns />
         <InvestingCampaigns />
       </HStack>
     </LoggedLayout>
-  )
-}
+  );
+};
 
 export async function getServerData() {
   return {
     props: {},
-    status: 200
-  }
+    status: 200,
+  };
 }
 /* 
 export async function getServerData(){
@@ -53,5 +52,4 @@ export async function getServerData(){
   }
 } */
 
-
-export default Dashboard
+export default Dashboard;

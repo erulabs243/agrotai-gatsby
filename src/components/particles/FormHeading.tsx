@@ -1,22 +1,24 @@
-import { Box, Heading, Text } from '@chakra-ui/react';
-import React from 'react'
+import { Box, Heading, Text } from "@chakra-ui/react";
+import React from "react";
 
 type Props = {
-    heading:string;
-    subheading?: string;
-}
+  heading: string;
+  subheading?: string;
+};
 
-function FormHeading({heading, subheading}: Props) {
+function FormHeading({ heading, subheading }: Props) {
   return (
     <Box my={6}>
-        <Heading fontSize="3xl" textTransform="uppercase">{heading}</Heading>
-        {subheading && 
-            <Text 
-                fontSize="lg"
-                color="gray.700"
-            >{subheading}</Text>}
+      <Heading fontSize="3xl" textTransform="uppercase">
+        {heading}
+      </Heading>
+      {subheading && (
+        <Text fontSize="lg" color="gray.700">
+          {subheading}
+        </Text>
+      )}
     </Box>
-  )
+  );
 }
 
-export default FormHeading
+export default FormHeading;

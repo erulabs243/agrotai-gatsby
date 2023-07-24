@@ -1,23 +1,20 @@
-import { Heading } from '@chakra-ui/react';
-import { CampaignChart } from '@components/logged';
-import { LoggedHeading } from '@components/particles';
-import LoggedLayout from '@layouts/logged';
-import React from 'react'
+import { CampaignChart } from "@components/logged";
+import { LoggedHeading } from "@components/particles";
+import LoggedLayout from "@layouts/logged";
+import { PageProps } from "gatsby";
+import React from "react";
 
-type Props = {}
+const Campaign: React.FC<PageProps> = props => {
+  const { username, campaign } = props.params;
 
-const Campaign = (props) => {
-
-    const {username, campaign} = props.params;
-
-    return (
+  return (
     <LoggedLayout username={username}>
       <LoggedHeading heading={campaign} />
 
       {/* Chart for dates */}
       <CampaignChart />
     </LoggedLayout>
-  )
-}
+  );
+};
 
-export default Campaign
+export default Campaign;

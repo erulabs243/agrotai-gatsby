@@ -10,12 +10,8 @@ import "@fontsource/dm-sans";
 import "animate.css/animate.min.css";
 
 import React from "react";
-import {Provider} from 'jotai'
+import { Provider } from "jotai";
 
-export const wrapRootElement = ({element}) => {
-    return (
-        <Provider>
-            {element}
-        </Provider>
-    )
-}
+export const wrapRootElement = ({ element }) => {
+  return <Provider>{element}</Provider>;
+};

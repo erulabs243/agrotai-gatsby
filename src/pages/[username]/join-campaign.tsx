@@ -1,14 +1,11 @@
-import React from 'react'
+import { PageProps } from "gatsby";
+import React from "react";
 
-type Props = {}
+const JoinCampaign: React.FC<PageProps> = props => {
+  const { username } = props.params;
+  console.log(username);
 
-const JoinCampaign = (props) => {
-    const {username} = props.params;
-    console.log(username)
+  return <div>JoinCampaign</div>;
+};
 
-  return (
-    <div>JoinCampaign</div>
-  )
-}
-
-export default JoinCampaign
+export default JoinCampaign;

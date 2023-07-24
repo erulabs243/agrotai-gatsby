@@ -1,54 +1,53 @@
 // Expertise card
 export type ExpertiseCardProps = {
-  title: string
-  icon: string
-  subtitle: string
-  description: string
-}
+  title: string;
+  icon: string;
+  subtitle: string;
+  description: string;
+};
 
 // Stats card
 export type StatsCardProps = {
-  amount: number
-  description: string
-  title: string
-  metric: string
-}
+  amount: number;
+  description: string;
+  title: string;
+  metric: string;
+};
 
 // Tabs
 export type HomeTabsProps = {
-  heading: string
-  image: string
-  description: string
-}
+  heading: string;
+  image: string;
+  description: string;
+};
 
 export type NavbarLinksProps = {
-  label: string
-  uri: string
-  isButton: boolean
-}
+  label: string;
+  uri: string;
+  isButton: boolean;
+};
 
 type ProductImage = {
-  url: string
-}
+  url: string;
+};
 
 export type ProductsGraphProps = {
-  name: string
-  slug: string
-  status: string
-  strapi_id: number
-  image: ProductImage[]
-}
+  name: string;
+  slug: string;
+  status: string;
+  strapi_id: number;
+  image: ProductImage[];
+};
 
 export interface StatCard {
   label: string;
-  amount:number;
+  amount: number;
   helperText?: string;
 }
 
-export interface StatCardWithIndicator
-  extends StatCard {
-    statType: "increase" | "decrease";
-    percentage: number;
+export interface StatCardWithIndicator extends StatCard {
+  statType: "increase" | "decrease";
+  percentage: number;
 }
 
 export interface DepositRow {
@@ -87,16 +86,16 @@ export interface BlogPost extends IPost {
   title: string;
   excerpt: string;
   updatedAt: string;
-  tags: ITag[]
-  cover : {
+  tags: ITag[];
+  cover: {
     localFile: {
       childImageSharp: {
         fixed: {
           src: string;
-        }
-      }
-    }
-  }
+        };
+      };
+    };
+  };
 }
 
 export interface IBlogPost extends BlogPost {
@@ -104,25 +103,25 @@ export interface IBlogPost extends BlogPost {
   content: {
     data: {
       content: string;
-    }
+    };
     medias: Array<{
       url: string;
-    }>
-  }
+    }>;
+  };
 }
 
 export interface ICareer {
   career: string;
-      cover: {
-        localFile: {
-          childImageSharp: {
-            fixed: {
-              src: string;
-            }
-          }
-        }
-      }
-      strapi_id: number;
-      updatedAt: string;
-      description: string;
+  cover: {
+    localFile: {
+      childImageSharp: {
+        fixed: {
+          src: string;
+        };
+      };
+    };
+  };
+  strapi_id: number;
+  updatedAt: string;
+  description: string;
 }

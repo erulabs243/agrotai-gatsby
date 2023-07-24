@@ -1,4 +1,4 @@
-import Hero from "./Hero"
-import ProductCard from "./ProductCard"
+import Hero from "./Hero";
+import ProductCard from "./ProductCard";
 
-export { Hero, ProductCard }
+export { Hero, ProductCard };

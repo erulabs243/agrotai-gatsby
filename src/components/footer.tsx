@@ -6,21 +6,18 @@ import {
   Link,
   Stack,
   Text,
-} from "@chakra-ui/react"
+} from "@chakra-ui/react";
 import {
-  IconBrandFacebook,
   IconBrandFacebookFilled,
   IconBrandTwitterFilled,
   IconBrandYoutube,
   IconMail,
   IconMapPin,
   IconPhone,
-} from "@tabler/icons-react"
-import React from "react"
+} from "@tabler/icons-react";
+import React from "react";
 
-type Props = {}
-
-const Footer = (props: Props) => {
+const Footer = () => {
   return (
     <Stack
       as={Box}
@@ -124,7 +121,7 @@ const Footer = (props: Props) => {
         </Stack>
       </Stack>
     </Stack>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

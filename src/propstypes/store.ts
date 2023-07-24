@@ -1,7 +1,7 @@
-import { ProductsGraphProps } from "@propstypes/particles"
+import { ProductsGraphProps } from "@propstypes/particles";
 
 export interface StoreProductaInterface {
   products: {
-    nodes: ProductsGraphProps[]
-  }
+    nodes: ProductsGraphProps[];
+  };
 }

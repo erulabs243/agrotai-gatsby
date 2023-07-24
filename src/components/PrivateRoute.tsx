@@ -1,19 +1,18 @@
-import { isLoggedIn } from '@services/auth';
-import { navigate } from 'gatsby';
-import React, { Children } from 'react';
+import { isLoggedIn } from "@services/auth";
+import { navigate } from "gatsby";
+import React from "react";
 
-type Props =  React.PropsWithChildren<{
-    location: string;
+type Props = React.PropsWithChildren<{
+  location: string;
 }>;
 
-const PrivateRoute = ({location, children}: Props) => {
+const PrivateRoute = ({ location, children }: Props) => {
+  if (!isLoggedIn() && location !== "/auth/login") {
+    navigate("/auth/login");
+    return null;
+  }
 
-    if(!isLoggedIn() && location !== '/auth/login'){
-        navigate('/auth/login');
-        return null;
-    }
-
-  return <>{children}</>
+  return <>{children}</>;
 };
 
 export default PrivateRoute;

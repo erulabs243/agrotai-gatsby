@@ -7,14 +7,21 @@
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
-import path from "path"
-import { SRCDIR } from "../../consts"
+import path from "path";
+import { SRCDIR } from "../../consts";
 
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
-})
+});
 
-console.log(process.env.STRAPI_HOST)
+const gatsbyRequiredRules = path.join(
+  process.cwd(),
+  "node_modules",
+  "gatsby",
+  "dist",
+  "utils",
+  "eslint-rules",
+);
 
 export default {
   siteMetadata: {
@@ -36,11 +43,11 @@ export default {
           "home-stat",
           "sale",
           "service",
-          'post',
+          "post",
           "career",
           "career-request",
           "tour",
-          "tag"
+          "tag",
         ],
         queryLimit: 1000,
       },
@@ -85,5 +92,18 @@ export default {
         portalZIndex: undefined,
       },
     },
+    {
+      resolve: "gatsby-plugin-eslint",
+      options: {
+        // Gatsby required rules directory
+        rulePaths: [gatsbyRequiredRules],
+        // Default settings that may be omitted or customized
+        stages: ["develop"],
+        extensions: ["js", "jsx", "ts", "tsx"],
+        exclude: ["node_modules", "bower_components", ".cache", "public"],
+        // Any additional eslint-webpack-plugin options below
+        // ...
+      },
+    },
   ],
-}
+};

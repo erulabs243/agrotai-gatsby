@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from "react";
 import {
   Box,
   Button,
@@ -14,15 +14,15 @@ import {
   Show,
   Stack,
   Text,
-} from "@chakra-ui/react"
-import { NavbarLinksProps } from "@propstypes/particles"
-import { Navlink } from "@components/particles"
-import { IconMenu2 } from "@tabler/icons-react"
-import { SERVER_HOST } from "../../consts"
+} from "@chakra-ui/react";
+import { NavbarLinksProps } from "@propstypes/particles";
+import { Navlink } from "@components/particles";
+import { IconMenu2 } from "@tabler/icons-react";
+import { SERVER_HOST } from "../../consts";
 
 type Props = {
-  siteTitle: string
-}
+  siteTitle: string;
+};
 
 const navbarLinks: Array<NavbarLinksProps> = [
   {
@@ -50,7 +50,7 @@ const navbarLinks: Array<NavbarLinksProps> = [
     uri: "/auth/login",
     isButton: true,
   },
-]
+];
 
 const Header = ({ siteTitle }: Props) => (
   <Box
@@ -67,10 +67,11 @@ const Header = ({ siteTitle }: Props) => (
         <Box>
           <Link href="/">
             <HStack gap={4}>
-              <Image 
-                src={`${SERVER_HOST}/uploads/logo_icon_685d01ff8a.png`} 
+              <Image
+                src={`${SERVER_HOST}/uploads/logo_icon_685d01ff8a.png`}
                 alt={siteTitle}
-                w={6} h={6}
+                w={6}
+                h={6}
                 objectFit="cover"
                 objectPosition="center"
               />
@@ -139,6 +140,6 @@ const Header = ({ siteTitle }: Props) => (
       </HStack>
     </Container>
   </Box>
-)
+);
 
-export default Header
+export default Header;

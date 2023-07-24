@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 import {
   Container,
   Box,
@@ -12,11 +12,9 @@ import {
   TabPanels,
   TabPanel,
   Show,
-} from "@chakra-ui/react"
-import { HomeTabsProps } from "@propstypes/particles"
-import { Zoom } from "react-awesome-reveal"
-
-type Props = {}
+} from "@chakra-ui/react";
+import { HomeTabsProps } from "@propstypes/particles";
+import { Zoom } from "react-awesome-reveal";
 
 const tabs: HomeTabsProps[] = [
   {
@@ -37,14 +35,14 @@ const tabs: HomeTabsProps[] = [
       "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZmFybWluZ3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
     description: "Contribuer à la réduction de la famine autour de vous",
   },
-]
+];
 
-const CrowdfarmingHero = (props: Props) => {
-  const [tabIndex, setTabIndex] = React.useState<number>(0)
+const CrowdfarmingHero = () => {
+  const [tabIndex, setTabIndex] = React.useState<number>(0);
 
   const handleUpdateTabIndex = (idx: number) => {
-    setTabIndex(idx)
-  }
+    setTabIndex(idx);
+  };
 
   return (
     <Container w="100%" maxW="100%">
@@ -166,7 +164,7 @@ const CrowdfarmingHero = (props: Props) => {
         </Show>
       </Stack>
     </Container>
-  )
-}
+  );
+};
 
-export default CrowdfarmingHero
+export default CrowdfarmingHero;

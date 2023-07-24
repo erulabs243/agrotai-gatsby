@@ -1,4 +1,4 @@
-import Hero from "./Hero"
-import HowStepper from "./Stepper"
+import Hero from "./Hero";
+import HowStepper from "./Stepper";
 
-export { Hero, HowStepper }
+export { Hero, HowStepper };

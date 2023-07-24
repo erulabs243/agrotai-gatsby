@@ -1,8 +1,8 @@
-import * as yup from 'yup'
+import * as yup from "yup";
 
 export const loginSchema = yup.object({
-    username: yup.string().required('Utilisateur obligatoire'),
-    password: yup.string().required('Mot de passe obligatoire'),
-})
+  username: yup.string().required("Utilisateur obligatoire"),
+  password: yup.string().required("Mot de passe obligatoire"),
+});
 
-export type loginType = yup.InferType<typeof loginSchema>
+export type loginType = yup.InferType<typeof loginSchema>;

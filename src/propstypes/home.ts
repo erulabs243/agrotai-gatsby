@@ -1,25 +1,30 @@
-import { BlogPost, ExpertiseCardProps, ICareer, StatsCardProps } from "@propstypes/particles"
+import {
+  BlogPost,
+  ExpertiseCardProps,
+  ICareer,
+  StatsCardProps,
+} from "@propstypes/particles";
 
 export interface HomeStatsInterface {
   stats: {
-    nodes: StatsCardProps[]
-  }
+    nodes: StatsCardProps[];
+  };
 }
 
 export interface HomeWorkInterface {
   works: {
-    nodes: ExpertiseCardProps[]
-  }
+    nodes: ExpertiseCardProps[];
+  };
 }
 
 export interface BlogInterface {
   posts: {
-    nodes: BlogPost[]
-  }
+    nodes: BlogPost[];
+  };
 }
 
 export interface CareersInterface {
   careers: {
-    nodes: ICareer[]
-  }
+    nodes: ICareer[];
+  };
 }

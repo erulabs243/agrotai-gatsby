@@ -1,7 +1,7 @@
-import { Box, Heading, Icon, Stack, Text } from "@chakra-ui/react"
-import { ExpertiseCardProps } from "@propstypes/particles"
-import { IconCarrot, IconCherry, IconFish } from "@tabler/icons-react"
-import React from "react"
+import { Box, Heading, Icon, Stack, Text } from "@chakra-ui/react";
+import { ExpertiseCardProps } from "@propstypes/particles";
+import { IconCarrot, IconCherry, IconFish } from "@tabler/icons-react";
+import React from "react";
 
 const ExpertiseCard = ({
   title,
@@ -39,7 +39,7 @@ const ExpertiseCard = ({
         </Text>
       </Box>
     </Stack>
-  )
-}
+  );
+};
 
-export default ExpertiseCard
+export default ExpertiseCard;

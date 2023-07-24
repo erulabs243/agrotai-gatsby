@@ -1,14 +1,10 @@
-import React from 'react'
+import { PageProps } from "gatsby";
+import React from "react";
 
-type Props = {}
+const Campaigns: React.FC<PageProps> = props => {
+  console.log(props.params);
 
-const Campaigns = (props) => {
+  return <div>Campaigns</div>;
+};
 
-    console.log(props.params)
-
-  return (
-    <div>Campaigns</div>
-  )
-}
-
-export default Campaigns
+export default Campaigns;

@@ -3,14 +3,12 @@ import {
   IndexHero,
   StatsHero,
   WorksHero,
-} from "@components/index"
-import Layout from "@layouts/layout"
-import { PageProps } from "gatsby"
-import React from "react"
+} from "@components/index";
+import Layout from "@layouts/layout";
+import { PageProps } from "gatsby";
+import React from "react";
 
-type Props = {}
-
-const IndexPage: React.FC<PageProps> = (props: Props) => {
+const IndexPage: React.FC<PageProps> = () => {
   return (
     <Layout>
       {/* INDEX HERO */}
@@ -25,7 +23,7 @@ const IndexPage: React.FC<PageProps> = (props: Props) => {
       {/* CROWDFARMING HERO */}
       <CrowdfarmingHero />
     </Layout>
-  )
-}
+  );
+};
 
-export default IndexPage
+export default IndexPage;

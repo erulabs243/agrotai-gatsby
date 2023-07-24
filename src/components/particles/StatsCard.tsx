@@ -1,8 +1,8 @@
-import { Box, Stack, Text } from "@chakra-ui/react"
-import { StatsCardProps } from "@propstypes/particles"
-import React from "react"
+import { Box, Stack, Text } from "@chakra-ui/react";
+import { StatsCardProps } from "@propstypes/particles";
+import React from "react";
 
-const StatsCard = ({ amount, description, title, metric }: StatsCardProps) => {
+const StatsCard = ({ amount, description, title }: StatsCardProps) => {
   return (
     <Stack
       as={Box}
@@ -30,7 +30,7 @@ const StatsCard = ({ amount, description, title, metric }: StatsCardProps) => {
       >{`+${amount}`}</Text>
       <Text textAlign="left">{description}</Text>
     </Stack>
-  )
-}
+  );
+};
 
-export default StatsCard
+export default StatsCard;

@@ -1,18 +1,15 @@
-import React from 'react'
+import React from "react";
 
 type Props = {
-    params: {
-        username: string;
-    }
-}
+  params: {
+    username: string;
+  };
+};
 
 const Userboard = (props: Props) => {
+  console.log(props);
 
-    console.log(props)
+  return <div>Userboard</div>;
+};
 
-  return (
-    <div>Userboard</div>
-  )
-}
-
-export default Userboard
+export default Userboard;

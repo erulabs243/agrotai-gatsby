@@ -21,5 +21,7 @@ module.exports = {
         "@typescript-eslint"
     ],
     "rules": {
+        "react/no-unescaped-entities": 0,
+        "semi": [2, "always"]
     }
-}
+};

@@ -1,9 +1,9 @@
-import { Container, Stack, Box, Heading, Text } from "@chakra-ui/react"
-import { graphql, useStaticQuery } from "gatsby"
-import { ExpertiseCard } from "@components/particles"
-import React from "react"
-import { HomeWorkInterface } from "@propstypes/home"
-import { Fade } from "react-awesome-reveal"
+import { Container, Stack, Box, Heading, Text } from "@chakra-ui/react";
+import { graphql, useStaticQuery } from "gatsby";
+import { ExpertiseCard } from "@components/particles";
+import React from "react";
+import { HomeWorkInterface } from "@propstypes/home";
+import { Fade } from "react-awesome-reveal";
 
 const WorksHero = () => {
   const { works } = useStaticQuery<HomeWorkInterface>(graphql`
@@ -17,7 +17,7 @@ const WorksHero = () => {
         }
       }
     }
-  `)
+  `);
 
   return (
     <Container w="100%" maxW="100%">
@@ -41,20 +41,20 @@ const WorksHero = () => {
           spacing={8}
         >
           <Fade cascade>
-          {works.nodes.map(work => (
-            <ExpertiseCard
-              key={work.title}
-              title={work.title}
-              subtitle={work.subtitle}
-              description={work.description}
-              icon={work.icon}
-            />
-          ))}
+            {works.nodes.map(work => (
+              <ExpertiseCard
+                key={work.title}
+                title={work.title}
+                subtitle={work.subtitle}
+                description={work.description}
+                icon={work.icon}
+              />
+            ))}
           </Fade>
         </Stack>
       </Stack>
     </Container>
-  )
-}
+  );
+};
 
-export default WorksHero
+export default WorksHero;

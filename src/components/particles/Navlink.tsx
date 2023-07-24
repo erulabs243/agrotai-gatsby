@@ -1,10 +1,18 @@
-import { Button, Icon, Link, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react"
-import { NavbarLinksProps } from "@propstypes/particles"
-import { IconChevronDown } from "@tabler/icons-react"
-import React from "react"
+import {
+  Button,
+  Icon,
+  Link,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+} from "@chakra-ui/react";
+import { NavbarLinksProps } from "@propstypes/particles";
+import { IconChevronDown } from "@tabler/icons-react";
+import React from "react";
 
 function Navlink({ label, uri, isButton }: NavbarLinksProps) {
-  if(uri !== '/about') 
+  if (uri !== "/about")
     return (
       <Link href={uri}>
         <Button
@@ -15,53 +23,63 @@ function Navlink({ label, uri, isButton }: NavbarLinksProps) {
           {label}
         </Button>
       </Link>
-    )
-  else 
-      return (
-        <Menu>
-          <MenuButton 
-            as={Button} 
-            rounded="lg" 
-            colorScheme="gray" 
-            variant="ghost"
-            rightIcon={<Icon as={IconChevronDown} />}
-          >{label}</MenuButton>
-          <MenuList px={2}>
-            <MenuItem
-              as={Link}
-              href="/about"
-              py={2}
-              px={4}
-              rounded="lg"
-              _hover={{textDecoration: 'none'}}
-            >Agrotai</MenuItem>
-            <MenuItem 
-              as={Link} 
-              href="/actualites" 
-              py={2}
-              px={4}
-              rounded="lg"
-              _hover={{textDecoration: 'none'}}
-            >Actualités</MenuItem>
-            <MenuItem 
-              as={Link} 
-              href="/careers" 
-              py={2}
-              px={4}
-              rounded="lg"
-              _hover={{textDecoration: 'none'}}
-            >Carrières</MenuItem>
-            <MenuItem 
-              as={Link} 
-              href="/galeries" 
-              py={2}
-              px={4}
-              rounded="lg"
-              _hover={{textDecoration: 'none'}}
-            >Galéries</MenuItem>
-          </MenuList>
-        </Menu>
-      )
+    );
+  else
+    return (
+      <Menu>
+        <MenuButton
+          as={Button}
+          rounded="lg"
+          colorScheme="gray"
+          variant="ghost"
+          rightIcon={<Icon as={IconChevronDown} />}
+        >
+          {label}
+        </MenuButton>
+        <MenuList px={2}>
+          <MenuItem
+            as={Link}
+            href="/about"
+            py={2}
+            px={4}
+            rounded="lg"
+            _hover={{ textDecoration: "none" }}
+          >
+            Agrotai
+          </MenuItem>
+          <MenuItem
+            as={Link}
+            href="/actualites"
+            py={2}
+            px={4}
+            rounded="lg"
+            _hover={{ textDecoration: "none" }}
+          >
+            Actualités
+          </MenuItem>
+          <MenuItem
+            as={Link}
+            href="/careers"
+            py={2}
+            px={4}
+            rounded="lg"
+            _hover={{ textDecoration: "none" }}
+          >
+            Carrières
+          </MenuItem>
+          <MenuItem
+            as={Link}
+            href="/galeries"
+            py={2}
+            px={4}
+            rounded="lg"
+            _hover={{ textDecoration: "none" }}
+          >
+            Galéries
+          </MenuItem>
+        </MenuList>
+      </Menu>
+    );
 }
 
-export default Navlink
+export default Navlink;
