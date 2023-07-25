@@ -1,4 +1,12 @@
-import { Box, Button, Container, Heading, Stack, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Container,
+  Heading,
+  Link,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 import React from "react";
 import { SERVER_HOST } from "../../consts";
 import { Fade, Slide } from "react-awesome-reveal";
@@ -29,16 +37,18 @@ const IndexHero = () => {
             py={{ base: 48, md: 64 }}
           >
             <Slide direction="down">
-              <Heading color="white">Agrotai</Heading>
+              <Heading as="h1" color="white">
+                Agrotai
+              </Heading>
             </Slide>
             <Slide cascade damping={0.3} direction="up" duration={1000}>
               <Text
                 fontSize={{ base: "lg", md: "xl", lg: "2xl" }}
                 color="white"
               >
-                Rendre l'agriculture meilleure en RDC
+                Pour une agriculture moderne et durable
               </Text>
-              <Button size="lg" alignSelf="center">
+              <Button size="lg" alignSelf="center" as={Link} href="#">
                 Rejoignez-nous
               </Button>
             </Slide>

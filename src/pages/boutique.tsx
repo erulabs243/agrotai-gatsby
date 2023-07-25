@@ -26,7 +26,7 @@ const Boutique: React.FC<PageProps<StoreProductaInterface>> = ({ data }) => {
         px={{ base: 4, md: 12 }}
       >
         <Box my={8} w="full">
-          <Heading fontSize="4xl" textAlign="center">
+          <Heading as="h1" fontSize="4xl" textAlign="center">
             Découvrez notre boutique
           </Heading>
           <Text textAlign="center" fontSize="lg">

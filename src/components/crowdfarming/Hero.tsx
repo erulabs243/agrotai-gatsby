@@ -27,7 +27,7 @@ function Hero() {
             <Fade delay={1000}>
               <Slide cascade>
                 <Heading
-                  as="h2"
+                  as="h1"
                   fontWeight={700}
                   textAlign={{ base: "center", lg: "left" }}
                 >

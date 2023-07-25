@@ -41,7 +41,7 @@ function Hero() {
             <Stack as={Box} spacing={4} w={{ base: "full", md: "40%" }}>
               <Fade delay={1000}>
                 <Slide delay={500} cascade damping={0.75}>
-                  <Heading fontWeight={700} as="h2">
+                  <Heading fontWeight={700} as="h1">
                     Des aliments{" "}
                     <Text as="span" color="green.700">
                       frais

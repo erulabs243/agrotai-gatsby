@@ -64,7 +64,7 @@ const Blog = () => {
             <Fade delay={1000}>
               <Slide cascade>
                 <Heading
-                  as="h2"
+                  as="h1"
                   mb={2}
                   fontWeight={700}
                   textAlign={{ base: "center", lg: "left" }}
