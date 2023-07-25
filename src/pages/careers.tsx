@@ -12,10 +12,12 @@ import {
 import { IconArrowRight } from "@tabler/icons-react";
 import Layout from "@layouts/layout";
 import { CareersInterface } from "@propstypes/home";
-import { PageProps, graphql, useStaticQuery } from "gatsby";
+import { HeadFC, PageProps, graphql, useStaticQuery } from "gatsby";
 import React from "react";
 import { Fade, Slide, Zoom } from "react-awesome-reveal";
 import { formatDate } from "../utils";
+import Seo from "@components/seo";
+import { SITETITLE } from "../../consts";
 
 const Careers: React.FC<PageProps> = () => {
   const { careers } = useStaticQuery<CareersInterface>(graphql`
@@ -156,5 +158,15 @@ const Careers: React.FC<PageProps> = () => {
     </Layout>
   );
 };
+
+export const Head: HeadFC = () => (
+  <Seo
+    title={`Rejoindre l'équipe - ${SITETITLE}`}
+    description="Travailler chez Agrotai et avec Agrotai 
+      est une expérience unique. 
+      Toutes les offres disponibles sur notre plateforme."
+    url="/careers"
+  />
+);
 
 export default Careers;

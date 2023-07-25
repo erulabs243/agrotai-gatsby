@@ -1,10 +1,12 @@
 import { Box, Container, Heading, SimpleGrid, Text } from "@chakra-ui/react";
+import Seo from "@components/seo";
 import { Hero, ProductCard } from "@components/store";
 import Layout from "@layouts/layout";
 import { StoreProductaInterface } from "@propstypes/store";
-import { PageProps, graphql } from "gatsby";
+import { HeadFC, PageProps, graphql } from "gatsby";
 import React from "react";
 import { Fade } from "react-awesome-reveal";
+import { SITETITLE } from "../../consts";
 
 const Boutique: React.FC<PageProps<StoreProductaInterface>> = ({ data }) => {
   const products = data.products.nodes;
@@ -58,5 +60,14 @@ export const query = graphql`
     }
   }
 `;
+
+export const Head: HeadFC = () => (
+  <Seo
+    title={`Notre boutique - ${SITETITLE}`}
+    description="Retrouvez dans la boutique Agrotai des 
+      produits disponibles et à venir pour passer vos commanders"
+    url="/boutique"
+  />
+);
 
 export default Boutique;

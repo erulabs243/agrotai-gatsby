@@ -13,10 +13,12 @@ import {
 import Layout from "@layouts/layout";
 import { BlogInterface } from "@propstypes/home";
 import { IconArrowRight } from "@tabler/icons-react";
-import { graphql, useStaticQuery } from "gatsby";
+import { HeadFC, graphql, useStaticQuery } from "gatsby";
 import React from "react";
 import { Slide, Zoom, Fade } from "react-awesome-reveal";
 import { formatDate } from "../utils";
+import Seo from "@components/seo";
+import { SITETITLE } from "../../consts";
 
 const Blog = () => {
   const { posts } = useStaticQuery<BlogInterface>(graphql`
@@ -177,5 +179,14 @@ const Blog = () => {
     </Layout>
   );
 };
+
+export const Head: HeadFC = () => (
+  <Seo
+    title={`Nos dernières nouvelles - ${SITETITLE}`}
+    description="Découvrez les dernières informations au sujet de 
+      Agrotai et de ses activités."
+    url="/actualites"
+  />
+);
 
 export default Blog;

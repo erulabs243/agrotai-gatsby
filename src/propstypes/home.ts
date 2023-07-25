@@ -2,6 +2,7 @@ import {
   BlogPost,
   ExpertiseCardProps,
   ICareer,
+  IGallery,
   StatsCardProps,
 } from "@propstypes/particles";
 
@@ -26,5 +27,11 @@ export interface BlogInterface {
 export interface CareersInterface {
   careers: {
     nodes: ICareer[];
+  };
+}
+
+export interface GaleriesInterface {
+  galeries: {
+    nodes: IGallery[];
   };
 }

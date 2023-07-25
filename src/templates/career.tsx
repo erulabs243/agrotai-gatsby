@@ -27,11 +27,12 @@ import {
 } from "@propstypes/schemas/career.schema";
 import axios from "axios";
 import ChakraUIRenderer from "chakra-ui-markdown-renderer";
-import { PageProps, graphql } from "gatsby";
+import { HeadProps, PageProps, graphql } from "gatsby";
 import React from "react";
 import { useForm } from "react-hook-form";
 import ReactMarkdown from "react-markdown";
 import { SERVER_HOST } from "../../consts";
+import Seo from "@components/seo";
 
 type ResultType = {
   strapiCareer: {
@@ -46,6 +47,7 @@ type ResultType = {
       };
     };
     cover: {
+      url;
       localFile: {
         childImageSharp: {
           fixed: {
@@ -120,7 +122,7 @@ const Career: React.FC<PageProps<ResultType>> = ({ data }) => {
         setFormLoading(false);
       }
     } catch (err) {
-      console.error(err.toJSON());
+      console.error(err);
       setFormError("Veuillez réessayer plus tard");
       setFormLoading(false);
     }
@@ -346,6 +348,7 @@ export const query = graphql`
         }
       }
       cover {
+        url
         localFile {
           childImageSharp {
             fixed {
@@ -357,5 +360,14 @@ export const query = graphql`
     }
   }
 `;
+
+export const Head: React.FC<HeadProps<ResultType>> = ({ data }) => (
+  <Seo
+    title={data.strapiCareer.career}
+    description={data.strapiCareer.description}
+    url={`/careers/${data.strapiCareer.strapi_id}`}
+    image={data.strapiCareer.cover.url}
+  />
+);
 
 export default Career;

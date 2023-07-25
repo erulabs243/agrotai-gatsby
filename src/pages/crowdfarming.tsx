@@ -1,8 +1,10 @@
 import { Heading, Container, Box, Text } from "@chakra-ui/react";
 import { Hero, HowStepper } from "@components/crowdfarming";
+import Seo from "@components/seo";
 import Layout from "@layouts/layout";
-import { PageProps } from "gatsby";
+import { HeadFC, PageProps } from "gatsby";
 import React from "react";
+import { SITETITLE } from "../../consts";
 
 const Crowdframing: React.FC<PageProps> = () => {
   return (
@@ -33,5 +35,15 @@ const Crowdframing: React.FC<PageProps> = () => {
     </Layout>
   );
 };
+
+export const Head: HeadFC = () => (
+  <Seo
+    title={`Financement participati - ${SITETITLE}`}
+    description="Avec le financement participatif chez Agrotai, 
+      participez à l'amélioration des conditions de vie 
+      de plusieurs personnes tout en gagnant de l'argent."
+    url="/crowdfarming"
+  />
+);
 
 export default Crowdframing;

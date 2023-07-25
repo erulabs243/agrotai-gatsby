@@ -59,7 +59,7 @@ const Header = ({ siteTitle }: Props) => (
     py={4}
     position="sticky"
     top={0}
-    bg="blackAlpha.300"
+    bg="whiteAlpha.900"
     zIndex={1000}
   >
     <Container mx="auto" w={{ base: "95vw", lg: "70vw" }} maxW="full" py={2}>

@@ -1,9 +1,10 @@
 import Layout from "@layouts/layout";
-import { PageProps, graphql } from "gatsby";
+import { HeadProps, PageProps, graphql } from "gatsby";
 import React from "react";
 import { Box, Heading, Image, Stack, Text } from "@chakra-ui/react";
 import ReactMarkdown from "react-markdown";
 import ChakraUIRenderer from "chakra-ui-markdown-renderer";
+import Seo from "@components/seo";
 
 type PostResult = {
   strapiPost: {
@@ -14,6 +15,7 @@ type PostResult = {
     slug: string;
     excerpt: string;
     cover: {
+      url: string;
       localFile: {
         childImageSharp: {
           fixed: {
@@ -78,6 +80,7 @@ const newTheme = {
 
 const Post: React.FC<PageProps<PostResult>> = ({ data }) => {
   const post = data.strapiPost;
+  console.log(JSON.stringify(post.cover));
 
   return (
     <Layout>
@@ -89,7 +92,7 @@ const Post: React.FC<PageProps<PostResult>> = ({ data }) => {
           mx="auto"
           py={{ base: 32, md: 48 }}
         >
-          <Heading mb={2} textAlign="center" w="full">
+          <Heading as="h1" mb={2} textAlign="center" w="full">
             {post.title}
           </Heading>
           <Text
@@ -138,6 +141,7 @@ export const query = graphql`
       slug
       excerpt
       cover {
+        url
         localFile {
           childImageSharp {
             fixed {
@@ -167,5 +171,14 @@ export const query = graphql`
     }
   }
 `;
+
+export const Head: React.FC<HeadProps<PostResult>> = ({ data }) => (
+  <Seo
+    title={data.strapiPost.title}
+    description={data.strapiPost.excerpt}
+    url={`/actualites/${data.strapiPost.slug}`}
+    image={data.strapiPost.cover.url}
+  />
+);
 
 export default Post;

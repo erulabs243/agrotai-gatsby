@@ -125,3 +125,24 @@ export interface ICareer {
   updatedAt: string;
   description: string;
 }
+
+export type ImageThumbnail = {
+  formats: {
+    thumbnail: {
+      url: string;
+      name: string;
+    };
+  };
+};
+
+export interface IGallery {
+  images: ImageThumbnail[];
+  title: string;
+  strapi_id: number;
+  updatedAt: string;
+  description: string;
+}
+
+export interface IGaleryNode {
+  strapi_id: number;
+}

@@ -7,7 +7,7 @@
 import { GatsbyNode } from "gatsby";
 import path from "path";
 import { SRCDIR } from "../../consts";
-import { ICareerNode, IPost } from "@propstypes/particles";
+import { ICareerNode, IPost, IGaleryNode } from "@propstypes/particles";
 
 /**
  * @type {import('gatsby').GatsbyNode['createPages']}
@@ -22,6 +22,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
   const dsgTemplate = path.resolve(`${SRCDIR}/templates/using-dsg.tsx`);
   const postTemplate = path.resolve(`${SRCDIR}/templates/post.tsx`);
   const careerTemplate = path.resolve(`${SRCDIR}/templates/career.tsx`);
+  const galeryTemplate = path.resolve(`${SRCDIR}/templates/galery.tsx`);
 
   const results = await graphql(`
     query {
@@ -35,6 +36,11 @@ export const createPages: GatsbyNode["createPages"] = async ({
         nodes {
           strapi_id
           career
+        }
+      }
+      allStrapiGallery {
+        nodes {
+          strapi_id
         }
       }
     }
@@ -65,6 +71,17 @@ export const createPages: GatsbyNode["createPages"] = async ({
       context: {
         id: career.strapi_id,
       },
+    });
+
+    const galeries = results.data.allStrapiGallery.nodes;
+    galeries.forEach((galery: IGaleryNode) => {
+      createPage({
+        path: `/galeries/${galery.strapi_id}`,
+        component: galeryTemplate,
+        context: {
+          id: galery.strapi_id,
+        },
+      });
     });
   });
 
