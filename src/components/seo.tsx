@@ -5,8 +5,8 @@
  * See: https://www.gatsbyjs.com/docs/how-to/querying-data/use-static-query/
  */
 
+import { graphql, useStaticQuery } from "gatsby";
 import * as React from "react";
-import { useStaticQuery, graphql } from "gatsby";
 import { SERVER_HOST } from "../../consts";
 
 type Props = {
@@ -35,15 +35,17 @@ function Seo({ description, title, image, url, children }: Props) {
   const defaultTitle = site.siteMetadata?.title;
   const siteUrl = site.siteMetadata?.siteUrl;
 
+  const img = image?.startsWith("http") ? image : `${SERVER_HOST}${image}`;
+
   return (
     <>
       <title>{defaultTitle ? `${title} | ${defaultTitle}` : title}</title>
       <meta name="description" content={metaDescription} />
-      <meta name="image" content={`${SERVER_HOST}${image}`} />
+      <meta name="image" content={img} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={metaDescription} />
       <meta property="og:type" content="website" />
-      <meta property="og:image" content={`${SERVER_HOST}${image}`} />
+      <meta property="og:image" content={img} />
       <meta property="og:url" content={url ? `${siteUrl}${url}` : siteUrl} />
       <meta property="og:locale" content="fr_FR" />
       <meta name="twitter:card" content="summary" />
@@ -54,7 +56,7 @@ function Seo({ description, title, image, url, children }: Props) {
         content={url ? `${siteUrl}${url}` : `${siteUrl}`}
       />
       <meta name="twitter:description" content={metaDescription} />
-      <meta name="twitter:image" content={`${SERVER_HOST}${image}`} />
+      <meta name="twitter:image" content={img} />
       {children}
     </>
   );

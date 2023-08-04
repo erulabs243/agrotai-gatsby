@@ -1,10 +1,13 @@
 import { Box, Heading, Image, Stack, Text } from "@chakra-ui/react";
 import Seo from "@components/seo";
 import Layout from "@layouts/layout";
+import { IGatsbyImage } from "@propstypes/particles";
 import ChakraUIRenderer from "chakra-ui-markdown-renderer";
 import { HeadProps, PageProps, graphql } from "gatsby";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import React from "react";
 import ReactMarkdown from "react-markdown";
+import { SERVER_HOST } from "../../consts";
 
 type PostResult = {
   strapiPost: {
@@ -14,16 +17,7 @@ type PostResult = {
     strapi_id: string;
     slug: string;
     excerpt: string;
-    cover: {
-      url: string;
-      localFile: {
-        childImageSharp: {
-          fixed: {
-            src: string;
-          };
-        };
-      };
-    };
+    cover: IGatsbyImage;
     tags: {
       strapi_id: number;
       title: string;
@@ -31,15 +25,6 @@ type PostResult = {
     content: {
       data: {
         content: string;
-      };
-      medias: {
-        localFile: {
-          childImageSharp: {
-            fixed: {
-              src: string;
-            };
-          };
-        };
       };
     };
   };
@@ -66,11 +51,11 @@ const newTheme = {
     const { src, alt } = props;
     return (
       <Image
-        src={src}
+        src={`${SERVER_HOST}${src}`}
         alt={alt}
         rounded="lg"
         w={{ base: "90vw", lg: "4xl" }}
-        h={{ base: 64, lg: 96 }}
+        maxH={{ base: 72, lg: 96 }}
         mr={{ base: 8, lg: "auto" }}
         my={8}
       />
@@ -83,20 +68,17 @@ const Post: React.FC<PageProps<PostResult>> = ({ data }) => {
 
   return (
     <Layout>
-      <Box w="full" bgGradient="linear(to-br, green.200, green.600)" mt={-24}>
-        <Stack
-          as={Box}
-          direction="column"
-          w={{ base: "90vw", lg: "6xl" }}
-          mx="auto"
-          py={{ base: 32, md: 48 }}
-        >
-          <Heading as="h1" mb={2} textAlign="center" w="full">
+      <Stack
+        my={{ base: 8, lg: 20 }}
+        w={{ base: "full", lg: "4xl" }}
+        mx={{ base: 6, lg: "auto" }}
+      >
+        <Stack as={Box} direction="column" w="full" mx="auto">
+          <Heading as="h1" mb={2} size="2xl" w="full">
             {post.title}
           </Heading>
           <Text
-            mb={{ base: 8, lg: 12 }}
-            textAlign="center"
+            mb={4}
             w={{ base: "full", lg: "4xl" }}
             fontSize={{ base: "lg", lg: "2xl" }}
             color="gray.700"
@@ -105,23 +87,19 @@ const Post: React.FC<PageProps<PostResult>> = ({ data }) => {
             {post.excerpt}
           </Text>
         </Stack>
-      </Box>
-      <Image
-        alt={post.title}
-        src={post.cover.localFile.childImageSharp.fixed.src}
-        h={{ base: 72, lg: 96 }}
-        w={{ base: "90vw", lg: "4xl" }}
-        objectFit="cover"
-        objectPosition="center"
-        mx={{ base: 6, lg: "auto" }}
-        mt={{ base: -24, lg: -48 }}
-        rounded="lg"
-      />
-      <Stack
-        my={{ base: 8, lg: 20 }}
-        w={{ base: "full", lg: "4xl" }}
-        mx={{ base: 6, lg: "auto" }}
-      >
+        <Image
+          as={GatsbyImage}
+          image={getImage(post.cover.localFile)}
+          style={{
+            borderRadius: "6px",
+            maxHeight: "50vh",
+            width: "100%",
+            objectFit: "cover",
+            objectPosition: "center",
+            marginTop: "2em",
+            marginBottom: "4em",
+          }}
+        />
         <ReactMarkdown components={ChakraUIRenderer(newTheme)} skipHtml>
           {post?.content.data.content}
         </ReactMarkdown>
@@ -143,9 +121,7 @@ export const query = graphql`
         url
         localFile {
           childImageSharp {
-            fixed {
-              src
-            }
+            gatsbyImageData(layout: FIXED, placeholder: BLURRED)
           }
         }
       }
@@ -156,15 +132,6 @@ export const query = graphql`
       content {
         data {
           content
-        }
-        medias {
-          localFile {
-            childImageSharp {
-              fixed {
-                src
-              }
-            }
-          }
         }
       }
     }

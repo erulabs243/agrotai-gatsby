@@ -1,8 +1,8 @@
 import {
   Box,
   Button,
-  Icon,
   Heading,
+  Icon,
   Image,
   Link,
   SimpleGrid,
@@ -10,15 +10,16 @@ import {
   Tag,
   Text,
 } from "@chakra-ui/react";
+import Seo from "@components/seo";
 import Layout from "@layouts/layout";
 import { BlogInterface } from "@propstypes/home";
 import { IconArrowRight } from "@tabler/icons-react";
 import { HeadFC, graphql, useStaticQuery } from "gatsby";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import React from "react";
-import { Slide, Zoom, Fade } from "react-awesome-reveal";
-import { formatDate } from "../utils";
-import Seo from "@components/seo";
+import { Fade, Slide, Zoom } from "react-awesome-reveal";
 import { SITETITLE } from "../../consts";
+import { formatDate } from "../utils";
 
 const Blog = () => {
   const { posts } = useStaticQuery<BlogInterface>(graphql`
@@ -37,9 +38,7 @@ const Blog = () => {
           cover {
             localFile {
               childImageSharp {
-                fixed {
-                  src
-                }
+                gatsbyImageData(layout: FIXED, placeholder: BLURRED)
               }
             }
           }
@@ -47,6 +46,8 @@ const Blog = () => {
       }
     }
   `);
+
+  console.log(JSON.stringify(posts, null, 2));
 
   return (
     <Layout>
@@ -116,13 +117,17 @@ const Blog = () => {
               <Stack direction="column" gap={0} flex={1}>
                 <Link href={`/actualites/${post.slug}`}>
                   <Image
-                    src={post.cover.localFile.childImageSharp.fixed.src}
-                    w="full"
-                    h={40}
-                    mb={{ base: 2, lg: 4 }}
-                    objectFit="cover"
-                    objectPosition="center"
-                    rounded="lg"
+                    as={GatsbyImage}
+                    image={getImage(post.cover.localFile)}
+                    style={{
+                      borderRadius: "6px",
+                      maxHeight: "20vh",
+                      width: "100%",
+                      objectFit: "cover",
+                      objectPosition: "center",
+                      marginTop: "1em",
+                      marginBottom: "2em",
+                    }}
                   />
                 </Link>
                 <Stack direction="row" my={2}>

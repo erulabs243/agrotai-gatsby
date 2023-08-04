@@ -1,3 +1,5 @@
+import { IGatsbyImageData } from "gatsby-plugin-image";
+
 // Expertise card
 export type ExpertiseCardProps = {
   title: string;
@@ -82,20 +84,19 @@ export interface ICareerNode {
   career: string;
 }
 
+export interface IGatsbyImage {
+  url: string;
+  localFile: {
+    childImageSharp: IGatsbyImageData;
+  };
+}
+
 export interface BlogPost extends IPost {
   title: string;
   excerpt: string;
   updatedAt: string;
   tags: ITag[];
-  cover: {
-    localFile: {
-      childImageSharp: {
-        fixed: {
-          src: string;
-        };
-      };
-    };
-  };
+  cover: IGatsbyImage;
 }
 
 export interface IBlogPost extends BlogPost {
@@ -112,15 +113,7 @@ export interface IBlogPost extends BlogPost {
 
 export interface ICareer {
   career: string;
-  cover: {
-    localFile: {
-      childImageSharp: {
-        fixed: {
-          src: string;
-        };
-      };
-    };
-  };
+  cover: IGatsbyImage;
   strapi_id: number;
   updatedAt: string;
   description: string;
