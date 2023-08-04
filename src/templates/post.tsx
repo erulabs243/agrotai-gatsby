@@ -1,10 +1,10 @@
+import { Box, Heading, Image, Stack, Text } from "@chakra-ui/react";
+import Seo from "@components/seo";
 import Layout from "@layouts/layout";
+import ChakraUIRenderer from "chakra-ui-markdown-renderer";
 import { HeadProps, PageProps, graphql } from "gatsby";
 import React from "react";
-import { Box, Heading, Image, Stack, Text } from "@chakra-ui/react";
 import ReactMarkdown from "react-markdown";
-import ChakraUIRenderer from "chakra-ui-markdown-renderer";
-import Seo from "@components/seo";
 
 type PostResult = {
   strapiPost: {
@@ -80,7 +80,6 @@ const newTheme = {
 
 const Post: React.FC<PageProps<PostResult>> = ({ data }) => {
   const post = data.strapiPost;
-  console.log(JSON.stringify(post.cover));
 
   return (
     <Layout>
@@ -124,7 +123,7 @@ const Post: React.FC<PageProps<PostResult>> = ({ data }) => {
         mx={{ base: 6, lg: "auto" }}
       >
         <ReactMarkdown components={ChakraUIRenderer(newTheme)} skipHtml>
-          {post.content.data.content}
+          {post?.content.data.content}
         </ReactMarkdown>
       </Stack>
     </Layout>
